@@ -31,34 +31,47 @@
     <div class="nav-right nav-menu"
       :class="{ 'is-active': isOpen }">
 
-      <a class="nav-item">
+      <router-link
+        class="nav-item"
+        title="Home"
+        to="/"
+        exact>
         Home
-      </a>
+      </router-link>
 
-      <a class="nav-item">
-        Documentation
-      </a>
+      <router-link
+        class="nav-item"
+        title="Home"
+        to="/demo"
+        exact>
+        Demo
+      </router-link>
 
-      <a class="nav-item">
-        Blog
-      </a>
+      <router-link
+        class="nav-item"
+        title="Home"
+        to="/evento"
+        exact>
+        Novo evento
+      </router-link>
 
       <div class="nav-item">
         <div class="field is-grouped">
           <p class="control">
-            <a class="button" >
+            <a class="button" title="Em breve">
               <span class="icon">
-                <i class="fa fa-twitter"></i>
+                <i class="fa fa-google"></i>
               </span>
-              <span>Tweet</span>
+              <span>Google Play</span>
             </a>
           </p>
+
           <p class="control">
-            <a class="button is-primary">
+            <a class="button" title="Em breve">
               <span class="icon">
-                <i class="fa fa-download"></i>
+                <i class="fa fa-apple"></i>
               </span>
-              <span>Download</span>
+              <span>App Store</span>
             </a>
           </p>
         </div>
