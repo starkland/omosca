@@ -1,22 +1,28 @@
 <template>
   <div id="app">
+    <m-navbar></m-navbar>
     <router-view></router-view>
+    <m-footer></m-footer>
   </div>
 </template>
 
 <script>
+import mNavbar from '@/components/Navbar';
+import mFooter from '@/components/Footer';
+
 export default {
   name: 'app',
+
+  components: {
+    mNavbar,
+    mFooter,
+  },
+
 };
 </script>
 
 <style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
 }
 </style>
