@@ -5,7 +5,7 @@
       subtitle="Aqui vem um subtitulo">
     </m-subheader>
 
-    <m-features></m-features>
+    <m-form></m-form>
 
     <m-newsletter></m-newsletter>
   </div>
@@ -13,7 +13,7 @@
 
 <script>
 import mSubheader from '@/components/Subheader';
-import mFeatures from '@/components/Features';
+import mForm from '@/components/Form';
 import mNewsletter from '@/components/Newsletter';
 
 export default {
@@ -26,7 +26,7 @@ export default {
 
   components: {
     mSubheader,
-    mFeatures,
+    mForm,
     mNewsletter,
   },
 };
