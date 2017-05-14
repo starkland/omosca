@@ -1,25 +1,28 @@
 <template>
   <div id="app">
     <m-navbar></m-navbar>
-    <m-subheader></m-subheader>
     <router-view></router-view>
+    <m-footer></m-footer>
   </div>
 </template>
 
 <script>
 import mNavbar from '@/components/Navbar';
-import mSubheader from '@/components/Subheader';
+import mFooter from '@/components/Footer';
 
 export default {
   name: 'app',
 
   components: {
     mNavbar,
-    mSubheader,
+    mFooter,
   },
 
 };
 </script>
 
 <style scoped>
+#app {
+  height: 100%;
+}
 </style>

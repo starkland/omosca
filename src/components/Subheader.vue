@@ -1,13 +1,13 @@
 <template>
-  <section class="hero is-bold is-dark is-medium">
+  <section class="hero is-bold is-dark is-large">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
-          Primary title
+          {{title}}
         </h1>
 
         <h2 class="subtitle">
-          Primary subtitle
+          {{subtitle}}
         </h2>
       </div>
     </div>
@@ -17,6 +17,18 @@
 <script>
 export default {
   name: 'SubHeader',
+
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+
+    subtitle: {
+      type: String,
+      required: true,
+    },
+  },
 
   data() {
     return {};
