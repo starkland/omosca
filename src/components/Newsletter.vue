@@ -33,7 +33,7 @@
               </p>
             </div>
           </div>
-w
+
           <div class="column is-primary" v-if="showAlert">
             <div class="notification">
               <button class="delete" @click="hideAlert"></button>
