@@ -42,14 +42,6 @@
       <router-link
         class="nav-item"
         title="Home"
-        to="/demo"
-        exact>
-        Demo
-      </router-link>
-
-      <router-link
-        class="nav-item"
-        title="Home"
         to="/evento"
         exact>
         Novo evento
