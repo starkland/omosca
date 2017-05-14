@@ -55,7 +55,7 @@ export default {
 
 <style scoped>
   .heading {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
 
   .title {

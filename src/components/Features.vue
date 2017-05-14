@@ -24,6 +24,23 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sed quas veniam sapiente excepturi, quae.</p>
         </aside>
       </div>
+
+      <div class="columns content">
+        <aside class="column">
+          <h3>Title Here</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur laboriosam ad ratione deleniti praesentium a.</p>
+        </aside>
+
+        <aside class="column">
+          <h3>Title Here</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium perferendis temporibus corporis suscipit, officia quia.</p>
+        </aside>
+
+        <aside class="column">
+          <h3>Title Here</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sed quas veniam sapiente excepturi, quae.</p>
+        </aside>
+      </div>
     </section>
   </div>
 </template>
@@ -35,7 +52,11 @@ export default {
 </script>
 
 <style scoped>
-.heading {
-  margin-bottom: 50px
-}
+  .heading {
+    margin-bottom: 50px
+  }
+
+  .column {
+    margin-bottom: 30px;
+  }
 </style>
