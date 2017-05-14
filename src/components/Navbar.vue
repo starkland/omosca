@@ -44,7 +44,7 @@
         title="Home"
         to="/evento"
         exact>
-        Novo evento
+        Evento
       </router-link>
 
       <div class="nav-item">
@@ -52,9 +52,9 @@
           <p class="control">
             <a class="button" title="Em breve">
               <span class="icon">
-                <i class="fa fa-google"></i>
+                <i class="fa fa-android"></i>
               </span>
-              <span>Google Play</span>
+              <!-- <span>Google Play</span> -->
             </a>
           </p>
 
@@ -63,7 +63,16 @@
               <span class="icon">
                 <i class="fa fa-apple"></i>
               </span>
-              <span>App Store</span>
+              <!-- <span>App Store</span> -->
+            </a>
+          </p>
+
+          <p class="control">
+            <a class="button" title="Em breve">
+              <span class="icon">
+                <i class="fa fa-windows"></i>
+              </span>
+              <!-- <span>Windows Phone</span> -->
             </a>
           </p>
         </div>
