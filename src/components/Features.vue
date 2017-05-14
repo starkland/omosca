@@ -52,11 +52,15 @@ export default {
 </script>
 
 <style scoped>
+  .section {
+    min-height: 600px;
+  }
+
   .heading {
-    margin-bottom: 50px
+    margin-bottom: 70px
   }
 
   .column {
-    margin-bottom: 30px;
+    margin-bottom: 60px;
   }
 </style>
