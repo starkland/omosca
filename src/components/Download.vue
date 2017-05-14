@@ -31,6 +31,23 @@
           </li>
         </ul>
       </div>
+
+      <div class="content">
+        <aside :class="{ 'is-active': isActive === 'smartphone' }">
+          <h1>Smartphone</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, cumque aliquid natus consequuntur voluptates deserunt perspiciatis, quisquam quidem non labore!</p>
+        </aside>
+
+        <aside :class="{ 'is-active': isActive === 'tablet' }">
+          <h1>Tablet</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, cumque aliquid natus consequuntur voluptates deserunt perspiciatis, quisquam quidem non labore!</p>
+        </aside>
+
+        <aside :class="{ 'is-active': isActive === 'web' }">
+          <h1>Web</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, cumque aliquid natus consequuntur voluptates deserunt perspiciatis, quisquam quidem non labore!</p>
+        </aside>
+      </div>
     </div>
   </div>
 </template>
@@ -60,5 +77,19 @@ export default {
 
   .title {
     text-align: center;
+  }
+
+  .content {
+    background-color: #EFEFEF;
+    padding: 10px;
+    min-height: 400px;
+  }
+
+  .content aside {
+    display: none;
+  }
+
+  .content aside.is-active {
+    display: block;
   }
 </style>
