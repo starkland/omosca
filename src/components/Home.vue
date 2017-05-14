@@ -6,12 +6,15 @@
     </m-subheader>
 
     <m-features></m-features>
+
+    <m-newsletter></m-newsletter>
   </div>
 </template>
 
 <script>
 import mSubheader from '@/components/Subheader';
 import mFeatures from '@/components/Features';
+import mNewsletter from '@/components/Newsletter';
 
 export default {
   name: 'hello',
@@ -24,6 +27,7 @@ export default {
   components: {
     mSubheader,
     mFeatures,
+    mNewsletter,
   },
 };
 </script>
