@@ -8,6 +8,8 @@
     <m-features></m-features>
 
     <m-newsletter></m-newsletter>
+
+    <m-download></m-download>
   </div>
 </template>
 
@@ -15,6 +17,7 @@
 import mSubheader from '@/components/Subheader';
 import mFeatures from '@/components/Features';
 import mNewsletter from '@/components/Newsletter';
+import mDownload from '@/components/Download';
 
 export default {
   name: 'hello',
@@ -28,6 +31,7 @@ export default {
     mSubheader,
     mFeatures,
     mNewsletter,
+    mDownload,
   },
 };
 </script>
