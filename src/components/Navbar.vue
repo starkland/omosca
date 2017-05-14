@@ -100,4 +100,9 @@ export default {
 </script>
 
 <style scoped>
+.router-link-active {
+  border-bottom: 3px solid #89609E;
+  color: #89609E;
+  padding-bottom: calc(0.75rem - 3px);
+}
 </style>
