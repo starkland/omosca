@@ -10,6 +10,10 @@
 import mNavbar from '@/components/Navbar';
 import mFooter from '@/components/Footer';
 
+// Assets
+import Event from './assets/js/Event';
+import ApiService from './assets/js/ApiService';
+
 export default {
   name: 'app',
 
@@ -18,6 +22,29 @@ export default {
     mFooter,
   },
 
+  methods: {
+    handleNewsletter(email) {
+      const obj = {
+        email,
+        created_at: new Date().getTime(),
+      };
+
+      this.api.addNews(obj);
+    },
+  },
+
+  created() {
+    this.api = new ApiService();
+    this.api.update();
+  },
+
+  mounted() {
+    Event.$on('newsletter', this.handleNewsletter);
+  },
+
+  beforeDestroy() {
+    Event.$off('newsletter');
+  },
 };
 </script>
 
