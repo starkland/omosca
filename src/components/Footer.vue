@@ -1,16 +1,10 @@
 <template>
-  <footer class="footer">
+  <footer class="footer is-dark">
     <div class="container">
       <div class="content has-text-centered">
+        <p>© Copyright 2017 O Mosca - All Rights Reserved</p>
         <p>
-          <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-          is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
-        </p>
-        <p>
-          <a class="icon" href="https://github.com/jgthms/bulma">
-            <i class="fa fa-github"></i>
-          </a>
+          <a class="icon" title="Uhull"><i class="fa fa-grav"></i></a>
         </p>
       </div>
     </div>
@@ -28,4 +22,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .footer {
+    padding-bottom: 3rem;
+    background-color: #363636;
+  }
+
+  .footer p,
+  .footer a:hover {
+    color: #f5f5f5;
+  }
+</style>
