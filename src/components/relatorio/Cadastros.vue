@@ -1,6 +1,6 @@
 <template>
   <m-table
-    :data="events"
+    :data="cadastros"
     :type="tableType">
   </m-table>
 </template>
@@ -12,12 +12,12 @@ import Event from '../../assets/js/Event';
 import ApiService from '../../assets/js/ApiService';
 
 export default {
-  name: 'Events',
+  name: 'Cadastros',
 
   data() {
     return {
-      events: [],
-      tableType: 'eventos',
+      cadastros: [],
+      tableType: 'cadastro',
     };
   },
 
@@ -26,11 +26,11 @@ export default {
   },
 
   methods: {
-    handleEvents(obj) {
+    handleNews(obj) {
       const data = obj.data;
 
       if (data) {
-        Object.keys(data).map(item => this.events.push(data[item]));
+        Object.keys(data).map(item => this.cadastros.push(data[item]));
       }
     },
   },
@@ -40,13 +40,13 @@ export default {
   },
 
   mounted() {
-    this.api.getAllEvents();
+    this.api.getAllNews();
 
-    Event.$on('all_events', this.handleEvents);
+    Event.$on('all_newsletter', this.handleNews);
   },
 
   beforeDestroy() {
-    Event.$off('all_events');
+    Event.$off('all_newsletter');
   },
 };
 </script>

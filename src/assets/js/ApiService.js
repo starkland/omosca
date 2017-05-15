@@ -50,6 +50,13 @@ class ApiService {
       .then(response => Event.$emit('all_events', response))
       .catch(error => console.info(error));
   }
+
+  getAllNews() {
+    axios
+      .get(`${this.firebase_url}/newsletter.json`)
+      .then(response => Event.$emit('all_newsletter', response))
+      .catch(error => console.info(error));
+  }
 }
 
 export default ApiService;

@@ -6,12 +6,15 @@
     </m-subheader>
 
     <m-rel-events></m-rel-events>
+
+    <m-rel-users></m-rel-users>
   </div>
 </template>
 
 <script>
 import mSubheader from '@/components/Subheader';
 import mRelEvents from '@/components/relatorio/Events';
+import mRelUsers from '@/components/relatorio/Cadastros';
 
 export default {
   name: 'Rel_Eventos',
@@ -23,6 +26,7 @@ export default {
   components: {
     mSubheader,
     mRelEvents,
+    mRelUsers,
   },
 };
 </script>
