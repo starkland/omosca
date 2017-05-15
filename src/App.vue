@@ -31,19 +31,35 @@ export default {
 
       this.api.addNews(obj);
     },
+
+    handleSubmitForm(obj) {
+      const formObj = {
+        description: obj.description,
+        email: obj.email,
+        link: obj.link,
+        name: obj.name,
+        created_at: new Date().getTime(),
+      };
+
+      this.api.addEvent(formObj);
+    },
   },
 
   created() {
     this.api = new ApiService();
-    this.api.update();
+
+    this.api.newsUpdate();
+    this.api.eventUpdate();
   },
 
   mounted() {
     Event.$on('newsletter', this.handleNewsletter);
+    Event.$on('submit_form', this.handleSubmitForm);
   },
 
   beforeDestroy() {
     Event.$off('newsletter');
+    Event.$off('submit_form');
   },
 };
 </script>

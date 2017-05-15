@@ -1,7 +1,6 @@
 // import axios from 'axios';
 
 import Event from './Event';
-// import LocalStorage from './LocalStorage';
 
 class ApiService {
   constructor() {
@@ -19,13 +18,23 @@ class ApiService {
     this.db = window.firebase.database();
   }
 
-  // getData() {}
+  addEvent(obj) {
+    this.db.ref(`pre_events/${obj.created_at}`).set(obj);
+  }
 
   addNews(obj) {
     this.db.ref(`newsletter/${obj.created_at}`).set(obj);
   }
 
-  update() {
+  eventUpdate() {
+    this.db.ref('pre_events').on('value', (snapshot) => {
+      if (snapshot.val()) {
+        Event.$emit('pre_events_ok', snapshot.val());
+      }
+    });
+  }
+
+  newsUpdate() {
     this.db.ref('newsletter').on('value', (snapshot) => {
       if (snapshot.val()) {
         Event.$emit('newsletter_ok', snapshot.val());
