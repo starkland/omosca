@@ -5,13 +5,13 @@
       subtitle="Relatório dos eventos cadastrados.">
     </m-subheader>
 
-    <m-table></m-table>
+    <m-rel-events></m-rel-events>
   </div>
 </template>
 
 <script>
 import mSubheader from '@/components/Subheader';
-import mTable from '@/components/Table';
+import mRelEvents from '@/components/relatorio/Events';
 
 export default {
   name: 'Rel_Eventos',
@@ -22,7 +22,7 @@ export default {
 
   components: {
     mSubheader,
-    mTable,
+    mRelEvents,
   },
 };
 </script>

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="heading">
         <h1 class="title">
-          Total de eventos: {{tableData.length}}
+          Total de eventos: {{data.length}}
         </h1>
       </div>
 
@@ -19,7 +19,7 @@
         </thead>
 
         <tbody>
-          <tr v-for="item in tableData">
+          <tr v-for="item in data">
             <td>{{new Date(item.created_at)}}</td>
             <td>{{item.name}}</td>
             <td><a>{{item.email}}</a>
@@ -38,40 +38,19 @@
 </template>
 
 <script>
-import ApiService from '../assets/js/ApiService';
-import Event from '../assets/js/Event';
-
 export default {
   name: 'Table',
 
-  data() {
-    return {
-      tableData: [],
-    };
-  },
-
-  methods: {
-    handleEvents(obj) {
-      const data = obj.data;
-
-      if (data) {
-        Object.keys(data).map(item => this.tableData.push(data[item]));
-      }
+  props: {
+    data: {
+      type: Array,
     },
   },
 
-  created() {
-    this.api = new ApiService();
-  },
-
-  mounted() {
-    this.api.getAllEvents();
-
-    Event.$on('all_events', this.handleEvents);
-  },
-
-  beforeDestroy() {
-    Event.$off('all_events');
+  data() {
+    return {
+      eventsData: [],
+    };
   },
 };
 </script>
