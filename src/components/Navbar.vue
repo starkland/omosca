@@ -48,6 +48,7 @@
       </router-link>
 
       <router-link
+        v-if="isLogged"
         class="nav-item"
         title="Home"
         to="/relatorios"
@@ -90,12 +91,16 @@
 </template>
 
 <script>
+import LocalStorage from '../assets/js/LocalStorage';
+import Event from '../assets/js/Event';
+
 export default {
   name: 'Navbar',
 
   data() {
     return {
       isOpen: false,
+      isLogged: false,
     };
   },
 
@@ -103,15 +108,33 @@ export default {
     toggleMenu() {
       this.isOpen = !this.isOpen;
     },
+
+    handleFacebook() {
+      this.isLogged = !this.isLogged;
+    },
   },
 
+  created() {
+    this.storage = new LocalStorage('user_info');
+    Event.$on('facebook_ok', this.handleFacebook);
+  },
+
+  mounted() {
+    if (this.storage.get()) {
+      this.isLogged = true;
+    }
+  },
+
+  beforeDestroy() {
+    Event.$off('facebook_ok');
+  },
 };
 </script>
 
 <style scoped>
-.router-link-active {
-  border-bottom: 3px solid #89609E;
-  color: #89609E;
-  padding-bottom: calc(0.75rem - 3px);
-}
+  .router-link-active {
+    border-bottom: 3px solid #89609E;
+    color: #89609E;
+    padding-bottom: calc(0.75rem - 3px);
+  }
 </style>

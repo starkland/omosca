@@ -5,6 +5,7 @@ import Router from 'vue-router';
 import Home from '@/views/Home';
 import Evento from '@/views/Evento';
 import Relatorios from '@/views/Relatorios';
+import Login from '@/views/Login';
 
 Vue.use(Router);
 
@@ -20,6 +21,12 @@ export default new Router({
       path: '/evento',
       name: 'Evento',
       component: Evento,
+    },
+
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
     },
 
     {
