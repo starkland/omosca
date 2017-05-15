@@ -47,6 +47,7 @@ export default {
 
   created() {
     this.api = new ApiService();
+    this.api.init();
 
     this.api.newsUpdate();
     this.api.eventUpdate();

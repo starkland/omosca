@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Event from './Event';
 
 class ApiService {
@@ -11,8 +12,11 @@ class ApiService {
       messagingSenderId: '654704351091',
     };
 
-    window.firebase.initializeApp(this.config);
+    this.firebase_url = 'https://barber-152805.firebaseio.com';
+  }
 
+  init() {
+    window.firebase.initializeApp(this.config);
     this.db = window.firebase.database();
   }
 
@@ -38,6 +42,20 @@ class ApiService {
         Event.$emit('newsletter_ok', snapshot.val());
       }
     });
+  }
+
+  getAllEvents() {
+    axios
+      .get(`${this.firebase_url}/pre_events.json`)
+      .then(response => Event.$emit('all_events', response))
+      .catch(error => console.info(error));
+  }
+
+  getAllNews() {
+    axios
+      .get(`${this.firebase_url}/newsletter.json`)
+      .then(response => Event.$emit('all_newsletter', response))
+      .catch(error => console.info(error));
   }
 }
 
