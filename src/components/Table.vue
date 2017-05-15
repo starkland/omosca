@@ -20,7 +20,7 @@
 
         <tbody>
           <tr v-for="item in tableData">
-            <td>{{item.created_at}}</td>
+            <td>{{new Date(item.created_at)}}</td>
             <td>{{item.name}}</td>
             <td><a>{{item.email}}</a>
             </td>
