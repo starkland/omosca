@@ -1,5 +1,3 @@
-// import axios from 'axios';
-
 import Event from './Event';
 
 class ApiService {
