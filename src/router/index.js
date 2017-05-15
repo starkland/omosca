@@ -7,9 +7,26 @@ import Evento from '@/views/Evento';
 import Relatorios from '@/views/Relatorios';
 import Login from '@/views/Login';
 
+// Assets
+import LocalStorage from '../assets/js/LocalStorage';
+
+const storage = new LocalStorage('user_info');
+
+function validateRoute(next) {
+  const userInfo = storage.get();
+
+  if (!userInfo) {
+    next({ path: '/' });
+  } else {
+    next(true);
+  }
+}
+
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history', // removes the # from URL
+  saveScrollPosition: true,
   routes: [
     {
       path: '/',
@@ -33,6 +50,9 @@ export default new Router({
       path: '/relatorios',
       name: 'Relatorios',
       component: Relatorios,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
     },
   ],
 });
