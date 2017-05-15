@@ -41,7 +41,7 @@
 
       <router-link
         class="nav-item"
-        title="Home"
+        title="Evento"
         to="/evento"
         exact>
         Evento
@@ -50,11 +50,19 @@
       <router-link
         v-if="isLogged"
         class="nav-item"
-        title="Home"
+        title="Relatórios"
         to="/relatorios"
         exact>
         Relatórios
       </router-link>
+
+      <a
+        class="nav-item"
+        @click="logout"
+        v-if="isLogged"
+        title="Sair">
+        Sair
+      </a>
 
       <div class="nav-item">
         <div class="field is-grouped">
@@ -111,6 +119,12 @@ export default {
 
     handleFacebook() {
       this.isLogged = !this.isLogged;
+    },
+
+    logout() {
+      this.isLogged = false;
+      this.storage.clear();
+      this.$router.push('/');
     },
   },
 
