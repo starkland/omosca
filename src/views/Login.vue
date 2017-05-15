@@ -7,11 +7,19 @@
 
     <div class="section">
       <div class="container">
-        <button class="button is-medium is-fb" @click="fbLogin">
-          <span class="icon is-medium">
-            <i class="fa fa-facebook"></i>
-          </span>
-        </button>
+        <div class="columns">
+          <div class="column">
+            <button class="button is-medium is-fb" @click="fbLogin">
+              <span class="icon is-medium">
+                <i class="fa fa-facebook"></i>
+              </span>
+            </button>
+          </div>
+
+          <div class="column" v-if="logged">
+            <m-card :data="userInfo"></m-card>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -19,6 +27,7 @@
 
 <script>
 import mSubheader from '@/components/Subheader';
+import mCard from '@/components/Card';
 
 import OAuth from '../assets/js/oAuth';
 import Event from '../assets/js/Event';
@@ -28,11 +37,15 @@ export default {
   name: 'Login',
 
   data() {
-    return {};
+    return {
+      logged: false,
+      userInfo: '',
+    };
   },
 
   components: {
     mSubheader,
+    mCard,
   },
 
   methods: {
@@ -41,6 +54,8 @@ export default {
     },
 
     handleFacebook(obj) {
+      this.logged = true;
+
       const user = {
         name: obj.user.displayName,
         email: obj.user.email,
@@ -48,11 +63,8 @@ export default {
         id: obj.user.uid,
       };
 
+      this.userInfo = user;
       this.storage.set(user);
-
-      setTimeout(() => {
-        // autentica o cara;
-      }, 300);
     },
   },
 
@@ -61,6 +73,15 @@ export default {
     this.storage = new LocalStorage('user_info');
 
     Event.$on('facebook_ok', this.handleFacebook);
+  },
+
+  mounted() {
+    const userInfo = this.storage.get();
+
+    if (userInfo) {
+      this.logged = true;
+      this.userInfo = userInfo;
+    }
   },
 
   beforeDestroy() {

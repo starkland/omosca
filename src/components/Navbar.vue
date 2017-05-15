@@ -56,14 +56,6 @@
         Relatórios
       </router-link>
 
-      <a
-        class="nav-item"
-        @click="logout"
-        v-if="isLogged"
-        title="Sair">
-        Sair
-      </a>
-
       <div class="nav-item">
         <div class="field is-grouped">
           <p class="control">
@@ -121,16 +113,16 @@ export default {
       this.isLogged = !this.isLogged;
     },
 
-    logout() {
+    handleLogout() {
       this.isLogged = false;
-      this.storage.clear();
-      this.$router.push('/');
     },
   },
 
   created() {
     this.storage = new LocalStorage('user_info');
+
     Event.$on('facebook_ok', this.handleFacebook);
+    Event.$on('logout', this.handleLogout);
   },
 
   mounted() {
@@ -141,6 +133,7 @@ export default {
 
   beforeDestroy() {
     Event.$off('facebook_ok');
+    Event.$off('logout');
   },
 };
 </script>
