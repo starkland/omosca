@@ -17,15 +17,27 @@
               <p class="control is-expanded">
                 <input
                   class="input is-medium"
-                  type="text"
-                  placeholder="Cadastre seu e-mail para receber acesso antecipado.">
+                  type="email"
+                  v-model="email"
+                  placeholder="user@email.com">
               </p>
 
               <p class="control">
-                <a class="button is-primary is-medium">
+                <button
+                  class="button is-primary is-medium"
+                  :class="{ 'is-loading': isLoading }"
+                  @click="handleNewsletter">
+
                   Enviar
-                </a>
+                </button>
               </p>
+            </div>
+          </div>
+
+          <div class="column is-primary" v-if="showAlert">
+            <div class="notification">
+              <button class="delete" @click="hideAlert"></button>
+              E-mail cadastrado com sucesso, você será um dos primeiros a experimentar o nosso App.
             </div>
           </div>
         </div>
@@ -35,8 +47,43 @@
 </template>
 
 <script>
+import Event from '../assets/js/Event';
+
 export default {
   name: 'Newsletter',
+
+  data() {
+    return {
+      isLoading: false,
+      showAlert: false,
+      email: '',
+    };
+  },
+
+  methods: {
+    handleNewsletter() {
+      this.isLoading = true;
+
+      if (this.email) {
+        Event.$emit('newsletter', this.email);
+        this.handleNewsletterOk();
+      } else {
+        this.isLoading = false;
+      }
+    },
+
+    handleNewsletterOk() {
+      setTimeout(() => {
+        this.isLoading = false;
+        this.showAlert = true;
+        this.email = '';
+      }, 200);
+    },
+
+    hideAlert() {
+      this.showAlert = !this.showAlert;
+    },
+  },
 };
 </script>
 

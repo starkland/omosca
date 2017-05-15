@@ -41,10 +41,19 @@
 
       <router-link
         class="nav-item"
-        title="Home"
+        title="Evento"
         to="/evento"
         exact>
         Evento
+      </router-link>
+
+      <router-link
+        v-if="isLogged"
+        class="nav-item"
+        title="Relatórios"
+        to="/relatorios"
+        exact>
+        Relatórios
       </router-link>
 
       <div class="nav-item">
@@ -82,12 +91,16 @@
 </template>
 
 <script>
+import LocalStorage from '../assets/js/LocalStorage';
+import Event from '../assets/js/Event';
+
 export default {
   name: 'Navbar',
 
   data() {
     return {
       isOpen: false,
+      isLogged: false,
     };
   },
 
@@ -95,15 +108,40 @@ export default {
     toggleMenu() {
       this.isOpen = !this.isOpen;
     },
+
+    handleFacebook() {
+      this.isLogged = !this.isLogged;
+    },
+
+    handleLogout() {
+      this.isLogged = false;
+    },
   },
 
+  created() {
+    this.storage = new LocalStorage('user_info');
+
+    Event.$on('facebook_ok', this.handleFacebook);
+    Event.$on('logout', this.handleLogout);
+  },
+
+  mounted() {
+    if (this.storage.get()) {
+      this.isLogged = true;
+    }
+  },
+
+  beforeDestroy() {
+    Event.$off('facebook_ok');
+    Event.$off('logout');
+  },
 };
 </script>
 
 <style scoped>
-.router-link-active {
-  border-bottom: 3px solid #89609E;
-  color: #89609E;
-  padding-bottom: calc(0.75rem - 3px);
-}
+  .router-link-active {
+    border-bottom: 3px solid #89609E;
+    color: #89609E;
+    padding-bottom: calc(0.75rem - 3px);
+  }
 </style>

@@ -54,6 +54,8 @@ export default {
 <style scoped>
   .section {
     min-height: 600px;
+    background-image: url('../assets/images/pattern.png');
+    background-repeat: repeat;
   }
 
   .heading {
