@@ -2,7 +2,7 @@
   <div>
     <m-subheader
       title="Relatório"
-      subtitle="Relatório dos eventos cadastrados.">
+      subtitle="Relatório da aplicação.">
     </m-subheader>
 
     <m-rel-events></m-rel-events>

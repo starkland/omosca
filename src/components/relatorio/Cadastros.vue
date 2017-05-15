@@ -1,12 +1,11 @@
 <template>
   <m-table
-    :data="cadastros"
-    :type="tableType">
+    :data="cadastros">
   </m-table>
 </template>
 
 <script>
-import mTable from '../Table';
+import mTable from '../TableRegister';
 
 import Event from '../../assets/js/Event';
 import ApiService from '../../assets/js/ApiService';

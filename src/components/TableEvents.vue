@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <div class="container" v-if="type == 'eventos'">
+    <div class="container">
       <div class="heading">
         <h1 class="title">
           Total de eventos: {{data.length}}
@@ -34,31 +34,6 @@
         </tbody>
       </table>
     </div>
-
-    <div class="container" v-if="type == 'cadastros'">
-      <div class="heading">
-        <h1 class="title">
-          Total de cadastros: {{data.length}}
-        </h1>
-      </div>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr v-for="item in data">
-            <td>{{new Date(item.created_at)}}</td>
-            <td><a>{{item.email}}</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 </template>
 
@@ -70,16 +45,10 @@ export default {
     data: {
       type: Array,
     },
-
-    type: {
-      type: String,
-    },
   },
 
   data() {
-    return {
-      eventsData: [],
-    };
+    return {};
   },
 };
 </script>
