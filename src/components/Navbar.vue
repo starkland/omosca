@@ -47,6 +47,14 @@
         Evento
       </router-link>
 
+      <router-link
+        class="nav-item"
+        title="Home"
+        to="/relatorio/eventos"
+        exact>
+        Relatório dos eventos
+      </router-link>
+
       <div class="nav-item">
         <div class="field is-grouped">
           <p class="control">
