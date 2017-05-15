@@ -12,7 +12,7 @@ class ApiService {
       messagingSenderId: '654704351091',
     };
 
-    this.firebase_url = 'https://barber-152805.firebaseio.com/pre_events.json';
+    this.firebase_url = 'https://barber-152805.firebaseio.com';
   }
 
   init() {
@@ -46,7 +46,7 @@ class ApiService {
 
   getAllEvents() {
     axios
-      .get(this.firebase_url)
+      .get(`${this.firebase_url}/pre_events.json`)
       .then(response => Event.$emit('all_events', response))
       .catch(error => console.info(error));
   }

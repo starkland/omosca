@@ -4,7 +4,7 @@ import Router from 'vue-router';
 // Views
 import Home from '@/views/Home';
 import Evento from '@/views/Evento';
-import RelatorioEventos from '@/views/Rel_eventos';
+import Relatorios from '@/views/Relatorios';
 
 Vue.use(Router);
 
@@ -23,9 +23,9 @@ export default new Router({
     },
 
     {
-      path: '/relatorio/eventos',
-      name: 'RelatorioEventos',
-      component: RelatorioEventos,
+      path: '/relatorios',
+      name: 'Relatorios',
+      component: Relatorios,
     },
   ],
 });

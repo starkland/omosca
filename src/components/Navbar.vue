@@ -50,9 +50,9 @@
       <router-link
         class="nav-item"
         title="Home"
-        to="/relatorio/eventos"
+        to="/relatorios"
         exact>
-        Relatório dos eventos
+        Relatórios
       </router-link>
 
       <div class="nav-item">
