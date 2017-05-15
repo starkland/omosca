@@ -181,6 +181,7 @@ export default {
 
     submitForm(obj) {
       Event.$emit('submit_form', obj);
+      this.handlePreEvents();
     },
 
     handlePreEvents() {
@@ -205,14 +206,6 @@ export default {
     hideAlert() {
       this.showAlert = !this.showAlert;
     },
-  },
-
-  mounted() {
-    Event.$on('pre_events_ok', this.handlePreEvents);
-  },
-
-  beforeDestroy() {
-    Event.$off('pre_events_ok');
   },
 };
 </script>

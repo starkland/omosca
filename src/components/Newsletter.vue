@@ -66,6 +66,7 @@ export default {
 
       if (this.email) {
         Event.$emit('newsletter', this.email);
+        this.handleNewsletterOk();
       } else {
         this.isLoading = false;
       }
@@ -82,14 +83,6 @@ export default {
     hideAlert() {
       this.showAlert = !this.showAlert;
     },
-  },
-
-  mounted() {
-    Event.$on('newsletter_ok', this.handleNewsletterOk);
-  },
-
-  beforeDestroy() {
-    Event.$off('newsletter_ok');
   },
 };
 </script>
