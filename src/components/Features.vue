@@ -64,7 +64,24 @@ export default {
   }
 
   .column {
-    margin-bottom: 60px;
+    margin: 50px auto;
+    position: relative;
+    text-align: center;
+  }
+
+  .column:before {
+    content: '';
+
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -30px;
+    top: -60px;
+
+    background-color: orange;
   }
 
   @keyframes moveBg {
