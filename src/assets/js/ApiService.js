@@ -4,15 +4,15 @@ import Event from './Event';
 class ApiService {
   constructor() {
     this.config = {
-      apiKey: 'AIzaSyADIQjYJyA3SzU-0pMejThDMPv3NfDRvwo',
-      authDomain: 'barber-152805.firebaseapp.com',
-      databaseURL: 'https://barber-152805.firebaseio.com',
-      projectId: 'barber-152805',
-      storageBucket: 'barber-152805.appspot.com',
-      messagingSenderId: '654704351091',
+      apiKey: 'AIzaSyAStWX8HkyyG2VRyFq7UW4TphmwRoLSNeE',
+      authDomain: 'omosca-app.firebaseapp.com',
+      databaseURL: 'https://omosca-app.firebaseio.com',
+      projectId: 'omosca-app',
+      storageBucket: 'omosca-app.appspot.com',
+      messagingSenderId: '353488643697',
     };
 
-    this.firebase_url = 'https://barber-152805.firebaseio.com';
+    this.firebase_url = 'https://omosca-app.firebaseio.com/';
   }
 
   init() {
