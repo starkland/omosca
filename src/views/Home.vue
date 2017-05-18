@@ -5,6 +5,8 @@
       subtitle="Aqui vem um subtitulo">
     </m-subheader>
 
+    <m-slide></m-slide>
+
     <m-features></m-features>
 
     <m-newsletter></m-newsletter>
@@ -19,6 +21,8 @@ import mFeatures from '@/components/Features';
 import mNewsletter from '@/components/Newsletter';
 import mDownload from '@/components/Download';
 
+import mSlide from '@/components/Slide';
+
 export default {
   name: 'hello',
 
@@ -32,6 +36,7 @@ export default {
     mFeatures,
     mNewsletter,
     mDownload,
+    mSlide,
   },
 };
 </script>
