@@ -87,4 +87,13 @@ export default {
     z-index: 9;
     position: relative;
   }
+
+  .swiper-button-prev {
+    transform: rotate(180deg);
+    background-image: url('../assets/images/icons/arrow.svg');
+  }
+
+  .swiper-button-next {
+    background-image: url('../assets/images/icons/arrow.svg');
+  }
 </style>
