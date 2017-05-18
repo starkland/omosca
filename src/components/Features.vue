@@ -10,34 +10,34 @@
 
       <div class="columns content">
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Mapa</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur laboriosam ad ratione deleniti praesentium a.</p>
         </aside>
 
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Agenda</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium perferendis temporibus corporis suscipit, officia quia.</p>
         </aside>
 
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Perfil</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sed quas veniam sapiente excepturi, quae.</p>
         </aside>
       </div>
 
       <div class="columns content">
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Favoritos</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur laboriosam ad ratione deleniti praesentium a.</p>
         </aside>
 
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Programação</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium perferendis temporibus corporis suscipit, officia quia.</p>
         </aside>
 
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Descontos</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sed quas veniam sapiente excepturi, quae.</p>
         </aside>
       </div>
