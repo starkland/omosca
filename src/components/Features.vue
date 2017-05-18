@@ -10,34 +10,34 @@
 
       <div class="columns content">
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Mapa</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur laboriosam ad ratione deleniti praesentium a.</p>
         </aside>
 
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Agenda</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium perferendis temporibus corporis suscipit, officia quia.</p>
         </aside>
 
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Perfil</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sed quas veniam sapiente excepturi, quae.</p>
         </aside>
       </div>
 
       <div class="columns content">
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Favoritos</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur laboriosam ad ratione deleniti praesentium a.</p>
         </aside>
 
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Programação</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium perferendis temporibus corporis suscipit, officia quia.</p>
         </aside>
 
         <aside class="column">
-          <h3>Title Here</h3>
+          <h3>Descontos</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sed quas veniam sapiente excepturi, quae.</p>
         </aside>
       </div>
@@ -56,6 +56,7 @@ export default {
     min-height: 600px;
     background-image: url('../assets/images/pattern.png');
     background-repeat: repeat;
+    animation: moveBg linear infinite 30s;
   }
 
   .heading {
@@ -63,6 +64,29 @@ export default {
   }
 
   .column {
-    margin-bottom: 60px;
+    margin: 50px auto;
+    position: relative;
+    text-align: center;
+  }
+
+  .column:before {
+    content: '';
+
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -30px;
+    top: -60px;
+
+    background-color: orange;
+  }
+
+  @keyframes moveBg {
+    0% { background-position: 0 10%; }
+    50% { background-position: 50% 40%; }
+    100% { background-position: 100% 90%; }
   }
 </style>
