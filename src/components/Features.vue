@@ -56,6 +56,7 @@ export default {
     min-height: 600px;
     background-image: url('../assets/images/pattern.png');
     background-repeat: repeat;
+    animation: moveBg linear infinite 30s;
   }
 
   .heading {
@@ -64,5 +65,11 @@ export default {
 
   .column {
     margin-bottom: 60px;
+  }
+
+  @keyframes moveBg {
+    0% { background-position: 0 10%; }
+    50% { background-position: 50% 40%; }
+    100% { background-position: 100% 90%; }
   }
 </style>
