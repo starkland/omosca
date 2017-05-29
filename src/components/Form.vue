@@ -43,7 +43,7 @@
           <p class="control has-icons-left has-icons-right">
             <input
               class="input"
-              type="text"
+              type="email"
               v-model="form.email"
               :class="{ 'is-danger' : fields.email }"
               placeholder="user@email.com">
@@ -78,6 +78,54 @@
 
             <span class="icon is-small is-right"
               v-if="fields.link">
+              <i class="fa fa-warning"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label">
+            Data e horário do evento
+          </label>
+
+          <p class="control has-icons-left has-icons-right">
+            <input
+              class="input"
+              type="datetime-local"
+              placeholder="data do evento"
+              :class="{ 'is-danger' : fields.date }"
+              v-model="form.date">
+
+            <span class="icon is-small is-left">
+              <i class="fa fa-calendar"></i>
+            </span>
+
+            <span class="icon is-small is-right"
+              v-if="fields.date">
+              <i class="fa fa-warning"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label">
+            Local do evento
+          </label>
+
+          <p class="control has-icons-left has-icons-right">
+            <input
+              class="input"
+              type="text"
+              placeholder="local do evento"
+              :class="{ 'is-danger' : fields.place }"
+              v-model="form.place">
+
+            <span class="icon is-small is-left">
+              <i class="fa fa-location-arrow"></i>
+            </span>
+
+            <span class="icon is-small is-right"
+              v-if="fields.place">
               <i class="fa fa-warning"></i>
             </span>
           </p>
@@ -148,6 +196,8 @@ export default {
         name: '',
         email: '',
         link: '',
+        date: '',
+        place: '',
         description: '',
         terms: false,
       },
@@ -155,6 +205,8 @@ export default {
         name: false,
         email: false,
         link: false,
+        date: false,
+        place: false,
         description: false,
         terms: false,
       },
@@ -168,15 +220,17 @@ export default {
       this.isLoading = true;
       const form = this.form;
 
-      // Object.keys(form).forEach((item) => {
-      //   if (!form[item]) {
-      //     this.fields[item] = true;
-      //   } else {
-      //     this.fields[item] = false;
-      //   }
-      // });
+      Object.keys(form).forEach((item) => {
+        if (!form[item]) {
+          this.fields[item] = true;
+        } else {
+          this.fields[item] = false;
+        }
+      });
 
-      this.submitForm(form);
+      if (form.terms) {
+        this.submitForm(form);
+      }
     },
 
     submitForm(obj) {
@@ -198,6 +252,8 @@ export default {
         name: '',
         email: '',
         link: '',
+        date: '',
+        place: '',
         description: '',
         terms: false,
       };
