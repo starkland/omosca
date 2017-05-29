@@ -38,6 +38,9 @@ export default new Router({
       path: '/evento',
       name: 'Evento',
       component: Evento,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
     },
 
     {
