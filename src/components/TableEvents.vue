@@ -80,7 +80,7 @@ export default {
     },
 
     removeEvent(itemObj) {
-      console.info('Remover evento..', itemObj);
+      Event.$emit('remove_event', itemObj);
     },
   },
 };

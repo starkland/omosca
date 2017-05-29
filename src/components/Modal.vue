@@ -5,7 +5,7 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">
-          Editar Evento
+          {{modal.title}}
         </p>
 
         <button class="delete"
@@ -14,11 +14,19 @@
       </header>
 
       <section class="modal-card-body">
-        <!-- Content ... -->
+        <div v-if="modal.type == 'remove'">
+          <p>
+            Você tem certeza que deseja remover este evento? <br /> Esta ação não poderá ser desfeita!
+          </p>
+        </div>
+
+        <div v-if="modal.type == 'edit'">
+        </div>
       </section>
 
       <footer class="modal-card-foot">
-        <a class="button is-success">
+        <a class="button is-success"
+          @click="submitModal()">
           Salvar
         </a>
 
@@ -39,27 +47,77 @@ export default {
   data() {
     return {
       isActive: false,
+      modal: {
+        title: '',
+        type: '',
+      },
     };
   },
 
   methods: {
-    handleModal(obj) {
+    handleEdit(obj) {
+      this.modal.title = 'Editar Evento';
+      this.modal.type = 'edit';
+
       this.isActive = !this.isActive;
 
       console.warn(obj);
     },
 
+    handleRemove(obj) {
+      this.modal.title = 'Remover Evento';
+      this.modal.type = 'remove';
+
+      this.isActive = !this.isActive;
+
+      console.info(obj);
+    },
+
     hideModal() {
       this.isActive = false;
+    },
+
+    editEvent() {
+      console.warn('Editar..');
+
+      setTimeout(() => {
+        this.isActive = !this.isActive;
+      }, 200);
+    },
+
+    removeEvent() {
+      console.warn('Remover..');
+
+      setTimeout(() => {
+        this.isActive = !this.isActive;
+      }, 200);
+    },
+
+    submitModal() {
+      switch (this.modal.type) {
+        case 'edit':
+          this.editEvent();
+          break;
+
+        case 'remove':
+          this.removeEvent();
+          break;
+
+        default:
+          console.warn('Defaut..');
+          break;
+      }
     },
   },
 
   mounted() {
-    Event.$on('edit_event', this.handleModal);
+    Event.$on('edit_event', this.handleEdit);
+    Event.$on('remove_event', this.handleRemove);
   },
 
   beforeDestroy() {
     Event.$off('edit_event');
+    Event.$off('remove_event');
   },
 };
 </script>
