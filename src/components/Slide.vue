@@ -1,8 +1,8 @@
 <template>
   <div>
-    <swiper :options="swiperOption" ref="mySwiper" n>
+    <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
-      <swiper-slide v-for="item in slides">
+      <swiper-slide v-for="item in slides" :key="item.id">
         <div class="container">
           <div class="slide-text">
             <h1 class="title">{{item.title}}</h1>
@@ -45,18 +45,21 @@ export default {
 
       slides: [
         {
+          id: 1,
           title: 'Title 1',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, praesentium!',
           image: 'http://dummyimage.com/2024x720/4d494d/686a82.gif&text=placeholder+image',
         },
 
         {
+          id: 2,
           title: 'Title 2',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, praesentium!',
           image: 'http://dummyimage.com/2024x720/4d494d/686a82.gif&text=placeholder+image',
         },
 
         {
+          id: 3,
           title: 'Title 3',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, praesentium!',
           image: 'http://dummyimage.com/2024x720/4d494d/686a82.gif&text=placeholder+image',
