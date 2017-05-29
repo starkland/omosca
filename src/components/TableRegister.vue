@@ -3,7 +3,7 @@
     <div class="container">
       <div class="heading">
         <h1 class="title">
-          Total de cadastros: {{data.length}}
+          Newsletter cadastradas: <span>{{data.length}}</span>
         </h1>
       </div>
 
@@ -54,5 +54,9 @@ export default {
 
   .heading {
     margin-bottom: 30px;
+  }
+
+  .title span {
+    color: red;
   }
 </style>

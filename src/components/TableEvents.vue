@@ -3,7 +3,7 @@
     <div class="container">
       <div class="heading">
         <h1 class="title">
-          Total de eventos: {{data.length}}
+          Eventos: <span>{{data.length}}</span>
         </h1>
       </div>
 
@@ -109,5 +109,9 @@ export default {
 
   button {
     margin-bottom: 5px;
+  }
+
+  .title span {
+    color: red;
   }
 </style>
