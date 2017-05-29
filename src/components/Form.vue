@@ -228,9 +228,7 @@ export default {
         }
       });
 
-      if (form.terms) {
-        this.submitForm(form);
-      }
+      this.submitForm(form);
     },
 
     submitForm(obj) {

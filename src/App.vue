@@ -38,6 +38,8 @@ export default {
         email: obj.email,
         link: obj.link,
         name: obj.name,
+        date_hour: obj.date,
+        place: obj.place,
         created_at: new Date().getTime(),
       };
 
