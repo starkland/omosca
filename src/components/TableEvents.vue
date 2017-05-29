@@ -20,7 +20,7 @@
         </thead>
 
         <tbody>
-          <tr v-for="item in data">
+          <tr v-for="item in orderedEvents">
             <td>
               {{item.date_hour | moment("DD/MM/YYYY")}}
               {{item.date_hour | moment("hh:mm")}}
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+import _ from 'lodash';
+
 import Event from '../assets/js/Event';
 import mModal from './Modal';
 
@@ -76,6 +78,12 @@ export default {
 
   data() {
     return {};
+  },
+
+  computed: {
+    orderedEvents() {
+      return _.orderBy(this.$props.data, 'date_hour');
+    },
   },
 
   methods: {
