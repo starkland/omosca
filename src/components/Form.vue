@@ -85,6 +85,28 @@
 
         <div class="field">
           <label class="label">
+            Foto do evento
+          </label>
+
+          <p class="control has-icons-left has-icons-right">
+            <input
+              class="input input-file"
+              type="file"
+              :class="{ 'is-danger' : fields.file }"
+              @change="fileChange">
+          </p>
+
+          <p class="control image-content" v-if="form.image">
+            <img :src="form.image" />
+
+            <p>nome: <span>{{image.name}}</span></p>
+            <p>extensão: <span>{{image.type}}</span></p>
+            <p>tamanho: <span>{{image.size}}</span></p>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label">
             Data e horário do evento
           </label>
 
@@ -195,11 +217,19 @@ export default {
       form: {
         name: '',
         email: '',
+        image: '',
         link: '',
         date: '',
         place: '',
         description: '',
         terms: false,
+      },
+      image: {
+        url: '',
+        name: '',
+        size: '',
+        type: '',
+        blob: '',
       },
       fields: {
         name: false,
@@ -228,7 +258,39 @@ export default {
         }
       });
 
-      this.submitForm(form);
+      console.warn(form);
+
+      // this.submitForm(form);
+    },
+
+    fileChange(e) {
+      const files = e.target.files || e.dataTransfer.files;
+
+      if (!files.length) {
+        return;
+      }
+
+      this.createImage(files[0]);
+    },
+
+    createImage(file) {
+      console.warn(file);
+
+      this.image = {
+        url: file,
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        blob: new Uint8Array(file),
+      };
+
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.form.image = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
     },
 
     submitForm(obj) {
@@ -271,5 +333,15 @@ export default {
 
   .notification {
     margin-top: 30px;
+  }
+
+  .image-content img {
+    margin: 10px 0;
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .image-content span {
+    font-weight: 900;
   }
 </style>
