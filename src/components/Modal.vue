@@ -95,6 +95,8 @@ export default {
       setTimeout(() => {
         this.isActive = !this.isActive;
       }, 300);
+
+      this.api.getAllEvents();
     },
 
     submitModal() {
