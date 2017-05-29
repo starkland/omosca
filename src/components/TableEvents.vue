@@ -46,10 +46,17 @@
         </tbody>
       </table>
     </div>
+
+    <div class="container">
+      <m-modal></m-modal>
+    </div>
   </div>
 </template>
 
 <script>
+import Event from '../assets/js/Event';
+import mModal from './Modal';
+
 export default {
   name: 'Table',
 
@@ -59,13 +66,17 @@ export default {
     },
   },
 
+  components: {
+    mModal,
+  },
+
   data() {
     return {};
   },
 
   methods: {
     editEvent(itemObj) {
-      console.warn('Editar evento..', itemObj);
+      Event.$emit('edit_event', itemObj);
     },
 
     removeEvent(itemObj) {
