@@ -14,13 +14,157 @@
       </header>
 
       <section class="modal-card-body">
+        <!-- Remove -->
         <div v-if="modal.type == 'remove'">
           <p>
             Você tem certeza que deseja remover este evento? <br /> Esta ação não poderá ser desfeita!
           </p>
         </div>
 
+        <!-- Edit -->
         <div v-if="modal.type == 'edit'">
+          <form>
+            <div class="field">
+              <label class="label">
+                Nome do evento
+              </label>
+
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="nome do evento"
+                  :class="{ 'is-danger' : fields.name }"
+                  v-model="form.name">
+
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+
+                <span class="icon is-small is-right"
+                  v-if="fields.name">
+                  <i class="fa fa-warning"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label">
+                Email do organizador
+              </label>
+
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  type="email"
+                  v-model="form.email"
+                  :class="{ 'is-danger' : fields.email }"
+                  placeholder="user@email.com">
+
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+
+                <span class="icon is-small is-right"
+                  v-if="fields.email">
+                  <i class="fa fa-warning"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label">
+                Link do evento
+              </label>
+
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="link do evento"
+                  :class="{ 'is-danger' : fields.link }"
+                  v-model="form.link">
+
+                <span class="icon is-small is-left">
+                  <i class="fa fa-link"></i>
+                </span>
+
+                <span class="icon is-small is-right"
+                  v-if="fields.link">
+                  <i class="fa fa-warning"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label">
+                Data e horário do evento
+              </label>
+
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  type="datetime-local"
+                  placeholder="data do evento"
+                  :class="{ 'is-danger' : fields.date }"
+                  v-model="form.date">
+
+                <span class="icon is-small is-left">
+                  <i class="fa fa-calendar"></i>
+                </span>
+
+                <span class="icon is-small is-right"
+                  v-if="fields.date">
+                  <i class="fa fa-warning"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label">
+                Local do evento
+              </label>
+
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="local do evento"
+                  :class="{ 'is-danger' : fields.place }"
+                  v-model="form.place">
+
+                <span class="icon is-small is-left">
+                  <i class="fa fa-location-arrow"></i>
+                </span>
+
+                <span class="icon is-small is-right"
+                  v-if="fields.place">
+                  <i class="fa fa-warning"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label">
+                Breve descrição
+              </label>
+
+              <p class="control has-icons-left has-icons-right">
+                <textarea
+                  class="textarea"
+                  type="text"
+                  placeholder="descreva o que vai ter no seu evento"
+                  :class="{ 'is-danger' : fields.description }"
+                  v-model="form.description">
+                </textarea>
+
+                <span class="icon is-small is-right"
+                  v-if="fields.description">
+                  <i class="fa fa-warning"></i>
+                </span>
+              </p>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -52,7 +196,15 @@ export default {
         title: '',
         type: '',
       },
-      userData: {},
+      fields: {
+        name: false,
+        email: false,
+        link: false,
+        date: false,
+        place: false,
+        description: false,
+      },
+      form: {},
     };
   },
 
@@ -63,7 +215,7 @@ export default {
 
       this.isActive = !this.isActive;
 
-      this.userData = obj;
+      this.form = obj;
     },
 
     handleRemove(obj) {
@@ -72,7 +224,7 @@ export default {
 
       this.isActive = !this.isActive;
 
-      this.userData = obj;
+      this.form = obj;
     },
 
     hideModal() {
@@ -80,15 +232,27 @@ export default {
     },
 
     editEvent() {
-      console.warn('Editar..');
+      const form = this.form;
+
+      Object.keys(form).forEach((item) => {
+        if (!form[item]) {
+          this.fields[item] = true;
+        } else {
+          this.fields[item] = false;
+        }
+      });
+
+      this.api.editEvent(this.form);
 
       setTimeout(() => {
         this.isActive = !this.isActive;
       }, 300);
+
+      this.api.getAllEvents();
     },
 
     removeEvent() {
-      const userId = this.userData.created_at;
+      const userId = this.form.created_at;
 
       this.api.removesEventById(userId);
 

@@ -65,6 +65,14 @@ class ApiService {
 
     this.db.ref(`pre_events/${id}`).remove();
   }
+
+  editEvent(obj) {
+    if (!this.db) {
+      this.db = window.firebase.database();
+    }
+
+    this.db.ref(`pre_events/${obj.created_at}`).update(obj);
+  }
 }
 
 export default ApiService;
