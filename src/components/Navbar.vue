@@ -40,6 +40,7 @@
       </router-link>
 
       <router-link
+        v-if="isLogged"
         class="nav-item"
         title="Evento"
         to="/evento"
@@ -59,29 +60,26 @@
       <div class="nav-item">
         <div class="field is-grouped">
           <p class="control">
-            <a class="button" title="Em breve">
+            <a class="button" title="Em breve na Google Play Store.">
               <span class="icon">
                 <i class="fa fa-android"></i>
               </span>
-              <!-- <span>Google Play</span> -->
             </a>
           </p>
 
           <p class="control">
-            <a class="button" title="Em breve">
+            <a class="button" title="Em breve na App Store.">
               <span class="icon">
                 <i class="fa fa-apple"></i>
               </span>
-              <!-- <span>App Store</span> -->
             </a>
           </p>
 
           <p class="control">
-            <a class="button" title="Em breve">
+            <a class="button" title="Em breve na Windows Store.">
               <span class="icon">
                 <i class="fa fa-windows"></i>
               </span>
-              <!-- <span>Windows Phone</span> -->
             </a>
           </p>
         </div>
