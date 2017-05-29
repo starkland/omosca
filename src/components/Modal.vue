@@ -40,6 +40,7 @@
 
 <script>
 import Event from '../assets/js/Event';
+import ApiService from '../assets/js/ApiService';
 
 export default {
   name: 'Modal',
@@ -51,6 +52,7 @@ export default {
         title: '',
         type: '',
       },
+      userData: {},
     };
   },
 
@@ -61,7 +63,7 @@ export default {
 
       this.isActive = !this.isActive;
 
-      console.warn(obj);
+      this.userData = obj;
     },
 
     handleRemove(obj) {
@@ -70,7 +72,7 @@ export default {
 
       this.isActive = !this.isActive;
 
-      console.info(obj);
+      this.userData = obj;
     },
 
     hideModal() {
@@ -82,15 +84,17 @@ export default {
 
       setTimeout(() => {
         this.isActive = !this.isActive;
-      }, 200);
+      }, 300);
     },
 
     removeEvent() {
-      console.warn('Remover..');
+      const userId = this.userData.created_at;
+
+      this.api.removesEventById(userId);
 
       setTimeout(() => {
         this.isActive = !this.isActive;
-      }, 200);
+      }, 300);
     },
 
     submitModal() {
@@ -108,6 +112,10 @@ export default {
           break;
       }
     },
+  },
+
+  created() {
+    this.api = new ApiService();
   },
 
   mounted() {

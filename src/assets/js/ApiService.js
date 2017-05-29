@@ -57,6 +57,14 @@ class ApiService {
       .then(response => Event.$emit('all_newsletter', response))
       .catch(error => console.info(error));
   }
+
+  removesEventById(id) {
+    if (!this.db) {
+      this.db = window.firebase.database();
+    }
+
+    this.db.ref(`pre_events/${id}`).remove();
+  }
 }
 
 export default ApiService;
