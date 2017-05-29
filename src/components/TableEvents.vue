@@ -15,6 +15,7 @@
             <th>Email</th>
             <th>Link</th>
             <th>Descrição</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -30,6 +31,17 @@
               </a>
             </td>
             <td>{{item.description}}</td>
+            <td>
+              <button class="button is-primary"
+                @click="editEvent(item)">
+                Editar
+              </button>
+
+              <button class="button is-danger"
+                @click="removeEvent(item)">
+                Excluir
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -50,6 +62,16 @@ export default {
   data() {
     return {};
   },
+
+  methods: {
+    editEvent(itemObj) {
+      console.warn('Editar evento..', itemObj);
+    },
+
+    removeEvent(itemObj) {
+      console.info('Remover evento..', itemObj);
+    },
+  },
 };
 </script>
 
@@ -60,5 +82,9 @@ export default {
 
   .heading {
     margin-bottom: 30px;
+  }
+
+  button {
+    margin-bottom: 5px;
   }
 </style>
