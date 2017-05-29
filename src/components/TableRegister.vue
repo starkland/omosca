@@ -17,8 +17,12 @@
 
         <tbody>
           <tr v-for="item in data">
-            <td>{{new Date(item.created_at)}}</td>
-            <td><a>{{item.email}}</a>
+            <td>
+              {{item.created_at | moment("DD/MM/YYYY")}}
+            </td>
+
+            <td>
+              <a>{{item.email}}</a>
             </td>
           </tr>
         </tbody>

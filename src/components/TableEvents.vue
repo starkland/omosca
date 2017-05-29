@@ -10,7 +10,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Data</th>
+            <th>Data / Hora</th>
             <th>Nome</th>
             <th>Email</th>
             <th>Link</th>
@@ -21,7 +21,11 @@
 
         <tbody>
           <tr v-for="item in data">
-            <td>{{new Date(item.created_at)}}</td>
+            <td>
+              {{item.date_hour | moment("DD/MM/YYYY")}}
+              {{item.date_hour | moment("hh:mm")}}
+            </td>
+
             <td>{{item.name}}</td>
             <td><a>{{item.email}}</a>
             </td>
