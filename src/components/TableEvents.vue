@@ -13,8 +13,6 @@
             <th>Data / Hora</th>
             <th>Nome</th>
             <th>Email</th>
-            <!-- <th>Link</th> -->
-            <!-- <th>Descrição</th> -->
             <th>Ações</th>
           </tr>
         </thead>
@@ -31,14 +29,6 @@
             <td>
               <a>{{item.email}}</a>
             </td>
-
-            <!-- <td>
-              <a :href="item.link" target="_blank">
-                {{item.link}}
-              </a>
-            </td> -->
-
-            <!-- <td>{{item.description}}</td> -->
 
             <td>
               <button class="button is-dark"
