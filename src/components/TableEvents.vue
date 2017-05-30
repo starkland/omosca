@@ -96,7 +96,7 @@ export default {
     },
 
     ViewEvent(itemObj) {
-      console.warn(itemObj);
+      this.$router.push(`/evento/${itemObj.created_at}`);
     },
   },
 };

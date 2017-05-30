@@ -43,7 +43,7 @@
         v-if="isLogged"
         class="nav-item"
         title="Evento"
-        to="/evento"
+        to="/evento/novo"
         exact>
         Evento
       </router-link>
