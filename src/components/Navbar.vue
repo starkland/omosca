@@ -2,11 +2,17 @@
   <nav class="nav has-shadow">
     <div class="nav-left">
       <a class="nav-item">
-        <img src="http://bulma.io/images/bulma-logo.pn" alt="O Mosca">
+        <img src="http://omosca.com/blog/wp-content/uploads/2017/05/icon-mosca-272x90px.png" alt="O Mosca">
       </a>
     </div>
 
     <div class="nav-center">
+      <a class="nav-item" href="http://omosca.com/blog/" target="_blank" title="Visite o nosso Blog!">
+        <span class="icon">
+          <i class="fa fa-rss"></i>
+        </span>
+      </a>
+
       <a class="nav-item" href="https://www.facebook.com/omoscape/" target="_blank" title="Visite o nosso Facebook">
         <span class="icon">
           <i class="fa fa-facebook"></i>
@@ -40,11 +46,12 @@
       </router-link>
 
       <router-link
+        v-if="isLogged"
         class="nav-item"
         title="Evento"
-        to="/evento"
+        to="/evento/novo"
         exact>
-        Evento
+        Novo evento
       </router-link>
 
       <router-link
@@ -59,29 +66,26 @@
       <div class="nav-item">
         <div class="field is-grouped">
           <p class="control">
-            <a class="button" title="Em breve">
+            <a class="button" title="Em breve na Google Play Store.">
               <span class="icon">
                 <i class="fa fa-android"></i>
               </span>
-              <!-- <span>Google Play</span> -->
             </a>
           </p>
 
           <p class="control">
-            <a class="button" title="Em breve">
+            <a class="button" title="Em breve na App Store.">
               <span class="icon">
                 <i class="fa fa-apple"></i>
               </span>
-              <!-- <span>App Store</span> -->
             </a>
           </p>
 
           <p class="control">
-            <a class="button" title="Em breve">
+            <a class="button" title="Em breve na Windows Store.">
               <span class="icon">
                 <i class="fa fa-windows"></i>
               </span>
-              <!-- <span>Windows Phone</span> -->
             </a>
           </p>
         </div>
@@ -143,5 +147,9 @@ export default {
     border-bottom: 3px solid #89609E;
     color: #89609E;
     padding-bottom: calc(0.75rem - 3px);
+  }
+
+  .nav-item img {
+    max-height: 2.75rem;
   }
 </style>

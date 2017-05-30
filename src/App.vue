@@ -33,13 +33,9 @@ export default {
     },
 
     handleSubmitForm(obj) {
-      const formObj = {
-        description: obj.description,
-        email: obj.email,
-        link: obj.link,
-        name: obj.name,
-        created_at: new Date().getTime(),
-      };
+      const formObj = obj;
+
+      formObj.created_at = new Date().getTime();
 
       this.api.addEvent(formObj);
     },
