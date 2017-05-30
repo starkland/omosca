@@ -4,6 +4,7 @@ import Router from 'vue-router';
 // Views
 import Home from '@/views/Home';
 import Evento from '@/views/Evento';
+import EventoInterno from '@/views/EventoInterno';
 import Relatorios from '@/views/Relatorios';
 import Login from '@/views/Login';
 
@@ -35,9 +36,21 @@ export default new Router({
     },
 
     {
-      path: '/evento',
+      path: '/evento/novo',
       name: 'Evento',
       component: Evento,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
+    },
+
+    {
+      path: '/evento/:id',
+      name: 'EventoInterno',
+      component: EventoInterno,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
     },
 
     {

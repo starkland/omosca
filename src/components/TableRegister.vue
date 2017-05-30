@@ -3,7 +3,7 @@
     <div class="container">
       <div class="heading">
         <h1 class="title">
-          Total de cadastros: {{data.length}}
+          Newsletter cadastradas: <span>{{data.length}}</span>
         </h1>
       </div>
 
@@ -17,8 +17,12 @@
 
         <tbody>
           <tr v-for="item in data">
-            <td>{{new Date(item.created_at)}}</td>
-            <td><a>{{item.email}}</a>
+            <td>
+              {{item.created_at | moment("DD/MM/YYYY")}}
+            </td>
+
+            <td>
+              <a>{{item.email}}</a>
             </td>
           </tr>
         </tbody>
@@ -50,5 +54,9 @@ export default {
 
   .heading {
     margin-bottom: 30px;
+  }
+
+  .title span {
+    color: red;
   }
 </style>

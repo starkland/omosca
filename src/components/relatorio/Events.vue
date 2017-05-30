@@ -29,6 +29,8 @@ export default {
       const data = obj.data;
 
       if (data) {
+        this.events.splice(0, this.events.length);
+
         Object.keys(data).map(item => this.events.push(data[item]));
       }
     },
