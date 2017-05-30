@@ -43,7 +43,7 @@
           <p class="control has-icons-left has-icons-right">
             <input
               class="input"
-              type="text"
+              type="email"
               v-model="form.email"
               :class="{ 'is-danger' : fields.email }"
               placeholder="user@email.com">
@@ -78,6 +78,83 @@
 
             <span class="icon is-small is-right"
               v-if="fields.link">
+              <i class="fa fa-warning"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label">
+            Foto do evento
+          </label>
+
+          <p class="control has-icons-left has-icons-right">
+            <input
+              class="input input-file"
+              type="text"
+              placeholder="link de uma foto para o evento"
+              v-model="form.image"
+              :class="{ 'is-danger' : fields.image }"
+              >
+              <!-- @change="fileChange" -->
+
+              <span class="icon is-small is-left">
+                <i class="fa fa-link"></i>
+              </span>
+          </p>
+
+          <!-- <p class="control image-content">
+            <img :src="form.image" />
+
+            <p>nome: <span>{{image.name}}</span></p>
+            <p>extensão: <span>{{image.type}}</span></p>
+            <p>tamanho: <span>{{image.size}}</span></p>
+          </p> -->
+        </div>
+
+        <div class="field">
+          <label class="label">
+            Data e horário do evento
+          </label>
+
+          <p class="control has-icons-left has-icons-right">
+            <input
+              class="input"
+              type="datetime-local"
+              placeholder="data do evento"
+              :class="{ 'is-danger' : fields.date }"
+              v-model="form.date">
+
+            <span class="icon is-small is-left">
+              <i class="fa fa-calendar"></i>
+            </span>
+
+            <span class="icon is-small is-right"
+              v-if="fields.date">
+              <i class="fa fa-warning"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label">
+            Local do evento
+          </label>
+
+          <p class="control has-icons-left has-icons-right">
+            <input
+              class="input"
+              type="text"
+              placeholder="local do evento"
+              :class="{ 'is-danger' : fields.place }"
+              v-model="form.place">
+
+            <span class="icon is-small is-left">
+              <i class="fa fa-location-arrow"></i>
+            </span>
+
+            <span class="icon is-small is-right"
+              v-if="fields.place">
               <i class="fa fa-warning"></i>
             </span>
           </p>
@@ -147,14 +224,27 @@ export default {
       form: {
         name: '',
         email: '',
+        image: '',
         link: '',
+        date: '',
+        place: '',
         description: '',
         terms: false,
       },
+      // image: {
+      //   url: '',
+      //   name: '',
+      //   size: '',
+      //   type: '',
+      //   blob: '',
+      // },
       fields: {
         name: false,
         email: false,
+        image: false,
         link: false,
+        date: false,
+        place: false,
         description: false,
         terms: false,
       },
@@ -168,15 +258,45 @@ export default {
       this.isLoading = true;
       const form = this.form;
 
-      // Object.keys(form).forEach((item) => {
-      //   if (!form[item]) {
-      //     this.fields[item] = true;
-      //   } else {
-      //     this.fields[item] = false;
-      //   }
-      // });
+      Object.keys(form).forEach((item) => {
+        if (!form[item]) {
+          this.fields[item] = true;
+        } else {
+          this.fields[item] = false;
+        }
+      });
 
       this.submitForm(form);
+    },
+
+    fileChange(e) {
+      const files = e.target.files || e.dataTransfer.files;
+
+      if (!files.length) {
+        return;
+      }
+
+      this.createImage(files[0]);
+    },
+
+    createImage(file) {
+      console.warn(file);
+
+      this.image = {
+        url: file,
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        blob: new Uint8Array(file),
+      };
+
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.form.image = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
     },
 
     submitForm(obj) {
@@ -197,7 +317,10 @@ export default {
       this.form = {
         name: '',
         email: '',
+        image: '',
         link: '',
+        date: '',
+        place: '',
         description: '',
         terms: false,
       };
@@ -217,5 +340,15 @@ export default {
 
   .notification {
     margin-top: 30px;
+  }
+
+  .image-content img {
+    margin: 10px 0;
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .image-content span {
+    font-weight: 900;
   }
 </style>

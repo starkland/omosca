@@ -3,41 +3,66 @@
     <div class="container">
       <div class="heading">
         <h1 class="title">
-          Total de eventos: {{data.length}}
+          Eventos: <span>{{data.length}}</span>
         </h1>
       </div>
 
       <table class="table">
         <thead>
           <tr>
-            <th>Data</th>
+            <th>Data / Hora</th>
             <th>Nome</th>
             <th>Email</th>
-            <th>Link</th>
-            <th>Descrição</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr v-for="item in data">
-            <td>{{new Date(item.created_at)}}</td>
-            <td>{{item.name}}</td>
-            <td><a>{{item.email}}</a>
-            </td>
+          <tr v-for="item in orderedEvents">
             <td>
-              <a :href="item.link" target="_blank">
-                {{item.link}}
-              </a>
+              {{item.date_hour | moment("DD/MM/YYYY")}}
+              {{item.date_hour | moment("hh:mm")}}
             </td>
-            <td>{{item.description}}</td>
+
+            <td>{{item.name}}</td>
+
+            <td>
+              <a>{{item.email}}</a>
+            </td>
+
+            <td>
+              <button class="button is-dark"
+                @click="ViewEvent(item)">
+                Visualizar
+              </button>
+
+              <button class="button is-primary"
+                @click="editEvent(item)">
+                Editar
+              </button>
+
+              <button class="button is-danger"
+                @click="removeEvent(item)">
+                Excluir
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="container">
+      <m-modal></m-modal>
     </div>
   </div>
 </template>
 
 <script>
+import _ from 'lodash';
+
+import Event from '../assets/js/Event';
+import mModal from './Modal';
+
 export default {
   name: 'Table',
 
@@ -47,8 +72,32 @@ export default {
     },
   },
 
+  components: {
+    mModal,
+  },
+
   data() {
     return {};
+  },
+
+  computed: {
+    orderedEvents() {
+      return _.orderBy(this.$props.data, 'date_hour');
+    },
+  },
+
+  methods: {
+    editEvent(itemObj) {
+      Event.$emit('edit_event', itemObj);
+    },
+
+    removeEvent(itemObj) {
+      Event.$emit('remove_event', itemObj);
+    },
+
+    ViewEvent(itemObj) {
+      this.$router.push(`/evento/${itemObj.created_at}`);
+    },
   },
 };
 </script>
@@ -60,5 +109,13 @@ export default {
 
   .heading {
     margin-bottom: 30px;
+  }
+
+  button {
+    margin-bottom: 5px;
+  }
+
+  .title span {
+    color: red;
   }
 </style>

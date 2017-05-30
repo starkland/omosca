@@ -57,6 +57,29 @@ class ApiService {
       .then(response => Event.$emit('all_newsletter', response))
       .catch(error => console.info(error));
   }
+
+  removesEventById(id) {
+    if (!this.db) {
+      this.db = window.firebase.database();
+    }
+
+    this.db.ref(`pre_events/${id}`).remove();
+  }
+
+  editEvent(obj) {
+    if (!this.db) {
+      this.db = window.firebase.database();
+    }
+
+    this.db.ref(`pre_events/${obj.created_at}`).update(obj);
+  }
+
+  getEventById(id) {
+    axios
+      .get(`${this.firebase_url}/pre_events/${id}.json`)
+      .then(response => Event.$emit('event_details', response.data))
+      .catch(error => console.info(error));
+  }
 }
 
 export default ApiService;
