@@ -45,7 +45,7 @@
         title="Evento"
         to="/evento/novo"
         exact>
-        Evento
+        Novo evento
       </router-link>
 
       <router-link
