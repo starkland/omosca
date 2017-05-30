@@ -91,18 +91,24 @@
           <p class="control has-icons-left has-icons-right">
             <input
               class="input input-file"
-              type="file"
+              type="text"
+              placeholder="link de uma foto para o evento"
               :class="{ 'is-danger' : fields.file }"
-              @change="fileChange">
+              >
+              <!-- @change="fileChange" -->
+
+              <span class="icon is-small is-left">
+                <i class="fa fa-link"></i>
+              </span>
           </p>
 
-          <p class="control image-content" v-if="form.image">
+          <!-- <p class="control image-content">
             <img :src="form.image" />
 
             <p>nome: <span>{{image.name}}</span></p>
             <p>extensão: <span>{{image.type}}</span></p>
             <p>tamanho: <span>{{image.size}}</span></p>
-          </p>
+          </p> -->
         </div>
 
         <div class="field">
@@ -224,16 +230,17 @@ export default {
         description: '',
         terms: false,
       },
-      image: {
-        url: '',
-        name: '',
-        size: '',
-        type: '',
-        blob: '',
-      },
+      // image: {
+      //   url: '',
+      //   name: '',
+      //   size: '',
+      //   type: '',
+      //   blob: '',
+      // },
       fields: {
         name: false,
         email: false,
+        image: false,
         link: false,
         date: false,
         place: false,
@@ -258,9 +265,7 @@ export default {
         }
       });
 
-      console.warn(form);
-
-      // this.submitForm(form);
+      this.submitForm(form);
     },
 
     fileChange(e) {
@@ -311,6 +316,7 @@ export default {
       this.form = {
         name: '',
         email: '',
+        image: '',
         link: '',
         date: '',
         place: '',
