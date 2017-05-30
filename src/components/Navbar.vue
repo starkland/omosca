@@ -2,7 +2,7 @@
   <nav class="nav has-shadow">
     <div class="nav-left">
       <a class="nav-item">
-        <img src="http://bulma.io/images/bulma-logo.pn" alt="O Mosca">
+        <img src="http://omosca.com/blog/wp-content/uploads/2017/05/icon-mosca-272x90px.png" alt="O Mosca">
       </a>
     </div>
 
@@ -141,5 +141,9 @@ export default {
     border-bottom: 3px solid #89609E;
     color: #89609E;
     padding-bottom: calc(0.75rem - 3px);
+  }
+
+  .nav-item img {
+    max-height: 2.75rem;
   }
 </style>
