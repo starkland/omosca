@@ -110,6 +110,10 @@ export default {
       return this.$route.params.id;
     },
   },
+
+  beforeDestroy() {
+    Event.$off('event_details');
+  },
 };
 </script>
 
