@@ -98,6 +98,26 @@
 
             <div class="field">
               <label class="label">
+                Foto do evento
+              </label>
+
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input input-file"
+                  type="text"
+                  placeholder="link de uma foto para o evento"
+                  v-model="form.image"
+                  :class="{ 'is-danger' : fields.image }"
+                  >
+
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-link"></i>
+                  </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label">
                 Data e horário do evento
               </label>
 
@@ -199,6 +219,7 @@ export default {
       fields: {
         name: false,
         email: false,
+        image: false,
         link: false,
         date: false,
         place: false,
@@ -210,7 +231,7 @@ export default {
 
   methods: {
     handleEdit(obj) {
-      this.modal.title = 'Editar Evento';
+      this.modal.title = `Editando ${obj.name}`;
       this.modal.type = 'edit';
 
       this.isActive = !this.isActive;

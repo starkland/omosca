@@ -13,8 +13,8 @@
             <th>Data / Hora</th>
             <th>Nome</th>
             <th>Email</th>
-            <th>Link</th>
-            <th>Descrição</th>
+            <!-- <th>Link</th> -->
+            <!-- <th>Descrição</th> -->
             <th>Ações</th>
           </tr>
         </thead>
@@ -32,15 +32,20 @@
               <a>{{item.email}}</a>
             </td>
 
-            <td>
+            <!-- <td>
               <a :href="item.link" target="_blank">
                 {{item.link}}
               </a>
-            </td>
+            </td> -->
 
-            <td>{{item.description}}</td>
+            <!-- <td>{{item.description}}</td> -->
 
             <td>
+              <button class="button is-dark"
+                @click="ViewEvent(item)">
+                Visualizar
+              </button>
+
               <button class="button is-primary"
                 @click="editEvent(item)">
                 Editar
@@ -98,6 +103,10 @@ export default {
 
     removeEvent(itemObj) {
       Event.$emit('remove_event', itemObj);
+    },
+
+    ViewEvent(itemObj) {
+      console.warn(itemObj);
     },
   },
 };
