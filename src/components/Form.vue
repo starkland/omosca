@@ -93,7 +93,8 @@
               class="input input-file"
               type="text"
               placeholder="link de uma foto para o evento"
-              :class="{ 'is-danger' : fields.file }"
+              v-model="form.image"
+              :class="{ 'is-danger' : fields.image }"
               >
               <!-- @change="fileChange" -->
 

@@ -27,14 +27,19 @@
             </td>
 
             <td>{{item.name}}</td>
-            <td><a>{{item.email}}</a>
+
+            <td>
+              <a>{{item.email}}</a>
             </td>
+
             <td>
               <a :href="item.link" target="_blank">
                 {{item.link}}
               </a>
             </td>
+
             <td>{{item.description}}</td>
+
             <td>
               <button class="button is-primary"
                 @click="editEvent(item)">

@@ -274,7 +274,6 @@ export default {
           break;
 
         default:
-          console.warn('Defaut..');
           break;
       }
     },
