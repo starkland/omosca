@@ -73,6 +73,13 @@ class ApiService {
 
     this.db.ref(`pre_events/${obj.created_at}`).update(obj);
   }
+
+  getEventById(id) {
+    axios
+      .get(`${this.firebase_url}/pre_events/${id}.json`)
+      .then(response => Event.$emit('event_details', response.data))
+      .catch(error => console.info(error));
+  }
 }
 
 export default ApiService;
