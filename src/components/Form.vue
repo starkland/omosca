@@ -142,19 +142,19 @@
           </label>
 
           <p class="control has-icons-left has-icons-right">
-            <input
+            <vue-google-autocomplete
+              id="map"
               class="input"
-              type="text"
-              placeholder="local do evento"
-              :class="{ 'is-danger' : fields.place }"
-              v-model="form.place">
+              v-model="form.location"
+              @placeChanged="getAddressData">
+            </vue-google-autocomplete>
 
             <span class="icon is-small is-left">
               <i class="fa fa-location-arrow"></i>
             </span>
 
             <span class="icon is-small is-right"
-              v-if="fields.place">
+              v-if="fields.location">
               <i class="fa fa-warning"></i>
             </span>
           </p>
@@ -214,10 +214,15 @@
 </template>
 
 <script>
+import VueGoogleAutocomplete from 'vue-google-autocomplete';
 import Event from '../assets/js/Event';
 
 export default {
   name: 'Form',
+
+  components: {
+    VueGoogleAutocomplete,
+  },
 
   data() {
     return {
@@ -227,24 +232,17 @@ export default {
         image: '',
         link: '',
         date: '',
-        place: '',
+        location: '',
         description: '',
         terms: false,
       },
-      // image: {
-      //   url: '',
-      //   name: '',
-      //   size: '',
-      //   type: '',
-      //   blob: '',
-      // },
       fields: {
         name: false,
         email: false,
         image: false,
         link: false,
         date: false,
-        place: false,
+        location: false,
         description: false,
         terms: false,
       },
@@ -266,7 +264,9 @@ export default {
         }
       });
 
-      this.submitForm(form);
+      console.warn(form.location);
+
+      // this.submitForm(form);
     },
 
     fileChange(e) {
@@ -320,7 +320,7 @@ export default {
         image: '',
         link: '',
         date: '',
-        place: '',
+        location: '',
         description: '',
         terms: false,
       };
@@ -328,6 +328,24 @@ export default {
 
     hideAlert() {
       this.showAlert = !this.showAlert;
+    },
+
+    getAddressData(address) {
+      // const {
+      //   route, locality,
+      //   latitude, longitude,
+      //   country,
+      // } = address;
+
+      console.warn(address);
+
+      // const locationForm = this.form.location;
+
+      // locationForm.address = `${route}, ${locality} - ${country}`;
+      // locationForm.coords[0] = latitude;
+      // locationForm.coords[1] = longitude;
+
+      // console.warn(locationForm);
     },
   },
 };
