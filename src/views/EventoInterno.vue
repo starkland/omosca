@@ -27,6 +27,11 @@
 
       <figure>
         <img :src="vm.image" :alt="vm.name">
+
+        <img
+          v-if="!vm.image"
+          alt="Imagem do evento">
+
         <figcaption>{{vm.name}}</figcaption>
       </figure>
     </div>
