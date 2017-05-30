@@ -7,6 +7,12 @@
     </div>
 
     <div class="nav-center">
+      <a class="nav-item" href="http://omosca.com/blog/" target="_blank" title="Visite o nosso Blog!">
+        <span class="icon">
+          <i class="fa fa-rss"></i>
+        </span>
+      </a>
+
       <a class="nav-item" href="https://www.facebook.com/omoscape/" target="_blank" title="Visite o nosso Facebook">
         <span class="icon">
           <i class="fa fa-facebook"></i>
