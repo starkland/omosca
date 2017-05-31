@@ -37,13 +37,13 @@
 
     <ul class="menu-list">
       <li>
-        <a @click="goTo('')">
+        <a @click="goTo('/perfil')">
           Meu perfil
         </a>
       </li>
 
       <li>
-        <a @click="goTo('')">
+        <a @click="goTo('/configuracoes')">
           Configurações
         </a>
       </li>
