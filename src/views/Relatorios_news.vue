@@ -2,10 +2,8 @@
   <div>
     <m-subheader
       title="Relatório"
-      subtitle="Relatório da aplicação.">
+      subtitle="Relatório de newsletters">
     </m-subheader>
-
-    <m-rel-events></m-rel-events>
 
     <m-rel-users></m-rel-users>
   </div>
@@ -13,19 +11,13 @@
 
 <script>
 import mSubheader from '@/components/Subheader';
-import mRelEvents from '@/components/relatorio/Events';
 import mRelUsers from '@/components/relatorio/Cadastros';
 
 export default {
-  name: 'Rel_Eventos',
-
-  data() {
-    return {};
-  },
+  name: 'Rel_News',
 
   components: {
     mSubheader,
-    mRelEvents,
     mRelUsers,
   },
 };
