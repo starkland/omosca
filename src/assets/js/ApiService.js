@@ -80,6 +80,14 @@ class ApiService {
       .then(response => Event.$emit('event_details', response.data))
       .catch(error => console.info(error));
   }
+
+  removeNewsById(id) {
+    if (!this.db) {
+      this.db = window.firebase.database();
+    }
+
+    this.db.ref(`newsletter/${id}`).remove();
+  }
 }
 
 export default ApiService;

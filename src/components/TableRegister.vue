@@ -36,6 +36,7 @@
           <tr>
             <th>Data</th>
             <th>Email</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -48,6 +49,13 @@
             <td>
               <a>{{item.email}}</a>
             </td>
+
+            <td>
+              <button class="button is-danger"
+                @click="removeEmail(item)">
+                Excluir
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -56,6 +64,9 @@
 </template>
 
 <script>
+import Event from '../assets/js/Event';
+import mModal from './Modal';
+
 export default {
   name: 'Table',
 
@@ -65,8 +76,14 @@ export default {
     },
   },
 
-  data() {
-    return {};
+  components: {
+    mModal,
+  },
+
+  methods: {
+    removeEmail(obj) {
+      Event.$emit('remove_newsletter', obj);
+    },
   },
 };
 </script>
