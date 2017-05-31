@@ -48,19 +48,10 @@
       <router-link
         v-if="isLogged"
         class="nav-item"
-        title="Evento"
-        to="/evento/novo"
+        title="Dashboard"
+        to="/dashboard"
         exact>
-        Novo evento
-      </router-link>
-
-      <router-link
-        v-if="isLogged"
-        class="nav-item"
-        title="Relatórios"
-        to="/relatorios"
-        exact>
-        Relatórios
+        Dashboard
       </router-link>
 
       <a
