@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 // Views
 import Home from '@/views/Home';
+import Termos from '@/views/Termos';
 import Evento from '@/views/Evento';
 import EventoInterno from '@/views/EventoInterno';
 import Relatorios from '@/views/Relatorios';
@@ -33,6 +34,12 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home,
+    },
+
+    {
+      path: '/termos',
+      name: 'Termos',
+      component: Termos,
     },
 
     {
