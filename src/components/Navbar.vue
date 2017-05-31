@@ -46,6 +46,14 @@
       </router-link>
 
       <router-link
+        class="nav-item"
+        title="Termos"
+        to="/termos"
+        exact>
+        Termos
+      </router-link>
+
+      <router-link
         v-if="isLogged"
         class="nav-item"
         title="Evento"
