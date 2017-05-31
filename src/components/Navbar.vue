@@ -54,24 +54,6 @@
         Dashboard
       </router-link>
 
-      <!-- <router-link
-        v-if="isLogged"
-        class="nav-item"
-        title="Evento"
-        to="/evento/novo"
-        exact>
-        Novo evento
-      </router-link>
-
-      <router-link
-        v-if="isLogged"
-        class="nav-item"
-        title="Relatórios"
-        to="/relatorios"
-        exact>
-        Relatórios
-      </router-link> -->
-
       <a
         v-if="isLogged"
         class="nav-item"

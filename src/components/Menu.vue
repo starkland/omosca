@@ -6,8 +6,9 @@
     </p>
 
     <ul class="menu-list">
-      <li><a>Cadastrar</a></li>
-      <li><a>Procurar</a></li>
+      <li>
+        <a @click="goTo('/evento/novo')">Cadastrar</a>
+      </li>
     </ul>
 
     <!-- Relatórios -->
@@ -16,8 +17,17 @@
     </p>
 
     <ul class="menu-list">
-      <li><a href="">Eventos</a></li>
-      <li><a href="">Newsletters</a></li>
+      <li>
+        <a @click="goTo('/relatorios/eventos')">
+          Eventos
+        </a>
+      </li>
+
+      <li>
+        <a @click="goTo('/relatorios/newsletter')">
+          Newsletter
+        </a>
+      </li>
     </ul>
 
     <!-- Perfil -->
@@ -26,8 +36,17 @@
     </p>
 
     <ul class="menu-list">
-      <li><a href="">Meu perfil</a></li>
-      <li><a href="">Configurações</a></li>
+      <li>
+        <a @click="goTo('')">
+          Meu perfil
+        </a>
+      </li>
+
+      <li>
+        <a @click="goTo('')">
+          Configurações
+        </a>
+      </li>
     </ul>
   </aside>
 </template>
@@ -35,6 +54,12 @@
 <script>
   export default {
     name: 'Menu',
+
+    methods: {
+      goTo(path) {
+        this.$router.push(path);
+      },
+    },
   };
 </script>
 
