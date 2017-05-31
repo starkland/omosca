@@ -100,10 +100,6 @@ export default {
     mModal,
   },
 
-  mounted() {
-    console.warn(this.$props.data);
-  },
-
   computed: {
     orderedEvents() {
       return _.orderBy(this.$props.data, 'date_hour');
