@@ -6,7 +6,7 @@
 // import LocalStorage from '../assets/js/LocalStorage';
 
 export default {
-  name: 'Configurações',
+  name: 'Configuracoes',
 };
 </script>
 
