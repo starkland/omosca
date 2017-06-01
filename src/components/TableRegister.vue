@@ -1,17 +1,42 @@
 <template>
   <div class="section">
     <div class="container">
-      <div class="heading">
-        <h1 class="title">
-          Newsletter cadastradas: <span>{{data.length}}</span>
-        </h1>
-      </div>
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Total</p>
+            <p class="title">{{data.length}}</p>
+          </div>
+        </div>
+
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Following</p>
+            <p class="title">123</p>
+          </div>
+        </div>
+
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Followers</p>
+            <p class="title">456K</p>
+          </div>
+        </div>
+
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Likes</p>
+            <p class="title">789</p>
+          </div>
+        </div>
+      </nav>
 
       <table class="table">
         <thead>
           <tr>
             <th>Data</th>
             <th>Email</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -24,6 +49,13 @@
             <td>
               <a>{{item.email}}</a>
             </td>
+
+            <td>
+              <button class="button is-danger"
+                @click="removeEmail(item)">
+                Excluir
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -32,6 +64,9 @@
 </template>
 
 <script>
+import Event from '../assets/js/Event';
+import mModal from './Modal';
+
 export default {
   name: 'Table',
 
@@ -41,8 +76,14 @@ export default {
     },
   },
 
-  data() {
-    return {};
+  components: {
+    mModal,
+  },
+
+  methods: {
+    removeEmail(obj) {
+      Event.$emit('remove_newsletter', obj);
+    },
   },
 };
 </script>
@@ -58,5 +99,13 @@ export default {
 
   .title span {
     color: red;
+  }
+
+  .level {
+    margin: 0 0 40px 0;
+  }
+
+  .level p {
+    color: #89609E;
   }
 </style>

@@ -46,21 +46,21 @@
       </router-link>
 
       <router-link
-        v-if="isLogged"
+        v-if="!isLogged"
         class="nav-item"
-        title="Evento"
-        to="/evento/novo"
+        title="Login"
+        to="/login"
         exact>
-        Novo evento
+        Login
       </router-link>
 
       <router-link
         v-if="isLogged"
         class="nav-item"
-        title="Relatórios"
-        to="/relatorios"
+        title="Dashboard"
+        to="/dashboard"
         exact>
-        Relatórios
+        Dashboard
       </router-link>
 
       <a
@@ -133,12 +133,10 @@ export default {
     },
   },
 
-
   created() {
     this.storage = new LocalStorage('user_info');
 
     Event.$on('facebook_ok', this.handleFacebook);
-    Event.$on('logout', this.logout);
   },
 
   mounted() {
@@ -149,7 +147,6 @@ export default {
 
   beforeDestroy() {
     Event.$off('facebook_ok');
-    Event.$off('logout');
   },
 };
 </script>

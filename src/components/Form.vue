@@ -188,7 +188,7 @@
               <input
                 type="checkbox"
                 v-model="form.terms">
-              Li e aceito os <a href="#">termos</a>.
+              Li e aceito os <a href="/termos">termos</a>.
             </label>
           </p>
         </div>

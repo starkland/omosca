@@ -9,15 +9,28 @@
       <div class="container">
         <div class="columns">
           <div class="column">
-            <button class="button is-medium is-fb" @click="fbLogin">
-              <span class="icon is-medium">
+            <a class="button is-medium is-default"
+              :class="{ 'is-loading': isLoading }"
+              @click="fbLogin">
+
+              <span class="icon">
                 <i class="fa fa-facebook"></i>
               </span>
-            </button>
-          </div>
 
-          <div class="column" v-if="logged">
-            <m-card :data="userInfo"></m-card>
+              <span>Entre com o facebook</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <article class="message is-danger" v-if="errorMsg">
+              <div class="message-header">
+                <p>Atenção!</p>
+              </div>
+
+              <div class="message-body">{{errorMsg}}</div>
+            </article>
           </div>
         </div>
       </div>
@@ -27,7 +40,6 @@
 
 <script>
 import mSubheader from '@/components/Subheader';
-import mCard from '@/components/Card';
 
 import OAuth from '../assets/js/oAuth';
 import Event from '../assets/js/Event';
@@ -38,33 +50,46 @@ export default {
 
   data() {
     return {
-      logged: false,
-      userInfo: '',
+      isLoading: false,
+      errorMsg: '',
     };
   },
 
   components: {
     mSubheader,
-    mCard,
   },
 
   methods: {
     fbLogin() {
+      this.isLoading = true;
       this.fb_oauth.login();
     },
 
     handleFacebook(obj) {
-      this.logged = true;
+      const user = obj.user;
 
-      const user = {
-        name: obj.user.displayName,
-        email: obj.user.email,
-        photoURL: obj.user.photoURL,
-        id: obj.user.uid,
+      if (user.uid === 'Zlc63LFcG6WXs2uJ2u7OgiR0Y6A3' || user.uid === 'm4VZhhWnF0R8DPQduhX1byUa2KH3') {
+        this.allowUser(user);
+      } else {
+        this.errorMsg = 'Você não tem autorização para realizar o login.';
+      }
+    },
+
+    allowUser(user) {
+      const userObj = {
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        id: user.uid,
       };
 
-      this.userInfo = user;
-      this.storage.set(user);
+      this.storage.set(userObj);
+
+      this.isLoading = false;
+
+      setTimeout(() => {
+        this.$router.push('/dashboard');
+      }, 200);
     },
   },
 
@@ -79,8 +104,9 @@ export default {
     const userInfo = this.storage.get();
 
     if (userInfo) {
-      this.logged = true;
-      this.userInfo = userInfo;
+      setTimeout(() => {
+        this.$router.push('/dashboard');
+      }, 200);
     }
   },
 
@@ -93,13 +119,5 @@ export default {
 <style scoped>
   .section {
     text-align: center;
-  }
-
-  .is-fb {
-    background-color: #6275AD;
-  }
-
-  .is-fb i {
-    color: #FFF !important;
   }
 </style>

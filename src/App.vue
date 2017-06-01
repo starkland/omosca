@@ -39,6 +39,16 @@ export default {
 
       this.api.addEvent(formObj);
     },
+
+    handleRemoveNews(obj) {
+      const objId = obj.created_at;
+
+      this.api.removeNewsById(objId);
+
+      setTimeout(() => {
+        this.api.getAllNews();
+      }, 300);
+    },
   },
 
   created() {
@@ -52,11 +62,13 @@ export default {
   mounted() {
     Event.$on('newsletter', this.handleNewsletter);
     Event.$on('submit_form', this.handleSubmitForm);
+    Event.$on('remove_newsletter', this.handleRemoveNews);
   },
 
   beforeDestroy() {
     Event.$off('newsletter');
     Event.$off('submit_form');
+    Event.$off('remove_newsletter');
   },
 };
 </script>

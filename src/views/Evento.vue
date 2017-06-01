@@ -6,28 +6,19 @@
     </m-subheader>
 
     <m-form></m-form>
-
-    <m-newsletter></m-newsletter>
   </div>
 </template>
 
 <script>
 import mSubheader from '@/components/Subheader';
 import mForm from '@/components/Form';
-import mNewsletter from '@/components/Newsletter';
 
 export default {
-  name: 'hello',
-
-  data() {
-    return {
-    };
-  },
+  name: 'Evento',
 
   components: {
     mSubheader,
     mForm,
-    mNewsletter,
   },
 };
 </script>

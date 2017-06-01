@@ -3,9 +3,14 @@ import Router from 'vue-router';
 
 // Views
 import Home from '@/views/Home';
+import Termos from '@/views/Termos';
+import Dashboard from '@/views/Dashboard';
 import Evento from '@/views/Evento';
 import EventoInterno from '@/views/EventoInterno';
-import Relatorios from '@/views/Relatorios';
+import RelatoriosEvt from '@/views/Relatorios_event';
+import RelatoriosNews from '@/views/Relatorios_news';
+import Perfil from '@/views/Perfil';
+import Configuracoes from '@/views/Configuracoes';
 import Login from '@/views/Login';
 
 // Assets
@@ -36,6 +41,21 @@ export default new Router({
     },
 
     {
+      path: '/termos',
+      name: 'Termos',
+      component: Termos,
+    },
+
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
+    },
+
+    {
       path: '/evento/novo',
       name: 'Evento',
       component: Evento,
@@ -60,9 +80,36 @@ export default new Router({
     },
 
     {
-      path: '/relatorios',
-      name: 'Relatorios',
-      component: Relatorios,
+      path: '/relatorios/eventos',
+      name: 'RelatoriosEventos',
+      component: RelatoriosEvt,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
+    },
+
+    {
+      path: '/relatorios/newsletter',
+      name: 'RelatoriosNewsletter',
+      component: RelatoriosNews,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
+    },
+
+    {
+      path: '/perfil',
+      name: 'Perfil',
+      component: Perfil,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
+    },
+
+    {
+      path: '/configuracoes',
+      name: 'Configuracoes',
+      component: Configuracoes,
       beforeEnter: (to, from, next) => {
         validateRoute(next);
       },

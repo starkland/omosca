@@ -1,11 +1,35 @@
 <template>
   <div class="section">
     <div class="container">
-      <div class="heading">
-        <h1 class="title">
-          Eventos: <span>{{data.length}}</span>
-        </h1>
-      </div>
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Total</p>
+            <p class="title">{{data.length}}</p>
+          </div>
+        </div>
+
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Following</p>
+            <p class="title">123</p>
+          </div>
+        </div>
+
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Followers</p>
+            <p class="title">456K</p>
+          </div>
+        </div>
+
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Likes</p>
+            <p class="title">789</p>
+          </div>
+        </div>
+      </nav>
 
       <table class="table">
         <thead>
@@ -76,10 +100,6 @@ export default {
     mModal,
   },
 
-  data() {
-    return {};
-  },
-
   computed: {
     orderedEvents() {
       return _.orderBy(this.$props.data, 'date_hour');
@@ -112,10 +132,19 @@ export default {
   }
 
   button {
+    display: inline-block;
     margin-bottom: 5px;
   }
 
   .title span {
     color: red;
+  }
+
+  .level {
+    margin: 0 0 40px 0;
+  }
+
+  .level p {
+    color: #89609E;
   }
 </style>

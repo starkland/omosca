@@ -29,6 +29,7 @@ export default {
       const data = obj.data;
 
       if (data) {
+        this.cadastros = [];
         Object.keys(data).map(item => this.cadastros.push(data[item]));
       }
     },
