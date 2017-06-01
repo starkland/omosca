@@ -10,6 +10,7 @@
         <div class="columns">
           <div class="column">
             <a class="button is-medium is-default"
+              :class="{ 'is-loading': isLoading }"
               @click="fbLogin">
 
               <span class="icon">
@@ -29,13 +30,16 @@
 import mSubheader from '@/components/Subheader';
 
 import OAuth from '../assets/js/oAuth';
+import Event from '../assets/js/Event';
 import LocalStorage from '../assets/js/LocalStorage';
 
 export default {
   name: 'Login',
 
   data() {
-    return {};
+    return {
+      isLoading: false,
+    };
   },
 
   components: {
@@ -44,21 +48,38 @@ export default {
 
   methods: {
     fbLogin() {
+      this.isLoading = true;
       this.fb_oauth.login();
+    },
+
+    handleFacebook() {
+      this.isLoading = false;
+
+      setTimeout(() => {
+        this.$router.push('/dashboard');
+      }, 200);
     },
   },
 
   created() {
     this.fb_oauth = new OAuth('facebook');
     this.storage = new LocalStorage('user_info');
+
+    Event.$on('facebook_ok', this.handleFacebook);
   },
 
   mounted() {
     const userInfo = this.storage.get();
 
     if (userInfo) {
-      this.logged = true;
+      setTimeout(() => {
+        this.$router.push('/dashboard');
+      }, 200);
     }
+  },
+
+  beforeDestroy() {
+    Event.$off('facebook_ok');
   },
 };
 </script>

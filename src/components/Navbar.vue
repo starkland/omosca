@@ -122,6 +122,8 @@ export default {
     },
 
     handleFacebook(obj) {
+      console.warn(obj.user);
+
       this.isLogged = !this.isLogged;
 
       const user = {
