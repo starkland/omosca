@@ -9,11 +9,15 @@
       <div class="container">
         <div class="columns">
           <div class="column">
-            <button class="button is-medium is-fb" @click="fbLogin">
-              <span class="icon is-medium">
+            <a class="button is-medium is-default"
+              @click="fbLogin">
+
+              <span class="icon">
                 <i class="fa fa-facebook"></i>
               </span>
-            </button>
+
+              <span>Entre com o facebook</span>
+            </a>
           </div>
         </div>
       </div>
@@ -62,13 +66,5 @@ export default {
 <style scoped>
   .section {
     text-align: center;
-  }
-
-  .is-fb {
-    background-color: #6275AD;
-  }
-
-  .is-fb i {
-    color: #FFF !important;
   }
 </style>
