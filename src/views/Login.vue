@@ -21,6 +21,18 @@
             </a>
           </div>
         </div>
+
+        <div class="columns">
+          <div class="column">
+            <article class="message is-danger" v-if="errorMsg">
+              <div class="message-header">
+                <p>Atenção!</p>
+              </div>
+
+              <div class="message-body">{{errorMsg}}</div>
+            </article>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -39,6 +51,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      errorMsg: '',
     };
   },
 
@@ -53,16 +66,26 @@ export default {
     },
 
     handleFacebook(obj) {
-      this.isLoading = false;
+      const user = obj.user;
 
-      const user = {
-        name: obj.user.displayName,
-        email: obj.user.email,
-        photoURL: obj.user.photoURL,
-        id: obj.user.uid,
+      if (user.uid === 'Zlc63LFcG6WXs2uJ2u7OgiR0Y6A3' || user.uid === 'm4VZhhWnF0R8DPQduhX1byUa2KH3') {
+        this.allowUser(user);
+      } else {
+        this.errorMsg = 'Você não tem autorização para realizar o login.';
+      }
+    },
+
+    allowUser(user) {
+      const userObj = {
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        id: user.uid,
       };
 
-      this.storage.set(user);
+      this.storage.set(userObj);
+
+      this.isLoading = false;
 
       setTimeout(() => {
         this.$router.push('/dashboard');
