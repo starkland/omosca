@@ -15,10 +15,6 @@
               </span>
             </button>
           </div>
-
-          <div class="column" v-if="logged">
-            <m-card :data="userInfo"></m-card>
-          </div>
         </div>
       </div>
     </div>
@@ -27,52 +23,30 @@
 
 <script>
 import mSubheader from '@/components/Subheader';
-import mCard from '@/components/Card';
 
 import OAuth from '../assets/js/oAuth';
-import Event from '../assets/js/Event';
 import LocalStorage from '../assets/js/LocalStorage';
 
 export default {
   name: 'Login',
 
   data() {
-    return {
-      logged: false,
-      userInfo: '',
-    };
+    return {};
   },
 
   components: {
     mSubheader,
-    mCard,
   },
 
   methods: {
     fbLogin() {
       this.fb_oauth.login();
     },
-
-    handleFacebook(obj) {
-      this.logged = true;
-
-      const user = {
-        name: obj.user.displayName,
-        email: obj.user.email,
-        photoURL: obj.user.photoURL,
-        id: obj.user.uid,
-      };
-
-      this.userInfo = user;
-      this.storage.set(user);
-    },
   },
 
   created() {
     this.fb_oauth = new OAuth('facebook');
     this.storage = new LocalStorage('user_info');
-
-    Event.$on('facebook_ok', this.handleFacebook);
   },
 
   mounted() {
@@ -80,12 +54,7 @@ export default {
 
     if (userInfo) {
       this.logged = true;
-      this.userInfo = userInfo;
     }
-  },
-
-  beforeDestroy() {
-    Event.$off('facebook_ok');
   },
 };
 </script>
