@@ -46,6 +46,15 @@
       </router-link>
 
       <router-link
+        v-if="!isLogged"
+        class="nav-item"
+        title="Login"
+        to="/login"
+        exact>
+        Login
+      </router-link>
+
+      <router-link
         v-if="isLogged"
         class="nav-item"
         title="Dashboard"
@@ -124,12 +133,10 @@ export default {
     },
   },
 
-
   created() {
     this.storage = new LocalStorage('user_info');
 
     Event.$on('facebook_ok', this.handleFacebook);
-    Event.$on('logout', this.logout);
   },
 
   mounted() {
@@ -140,7 +147,6 @@ export default {
 
   beforeDestroy() {
     Event.$off('facebook_ok');
-    Event.$off('logout');
   },
 };
 </script>

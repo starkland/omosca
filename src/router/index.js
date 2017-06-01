@@ -9,6 +9,8 @@ import Evento from '@/views/Evento';
 import EventoInterno from '@/views/EventoInterno';
 import RelatoriosEvt from '@/views/Relatorios_event';
 import RelatoriosNews from '@/views/Relatorios_news';
+import Perfil from '@/views/Perfil';
+import Configuracoes from '@/views/Configuracoes';
 import Login from '@/views/Login';
 
 // Assets
@@ -48,6 +50,9 @@ export default new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
     },
 
     {
@@ -87,6 +92,24 @@ export default new Router({
       path: '/relatorios/newsletter',
       name: 'RelatoriosNewsletter',
       component: RelatoriosNews,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
+    },
+
+    {
+      path: '/perfil',
+      name: 'Perfil',
+      component: Perfil,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
+    },
+
+    {
+      path: '/configuracoes',
+      name: 'Configuracoes',
+      component: Configuracoes,
       beforeEnter: (to, from, next) => {
         validateRoute(next);
       },

@@ -9,15 +9,16 @@
       <div class="container">
         <div class="columns">
           <div class="column">
-            <button class="button is-medium is-fb" @click="fbLogin">
-              <span class="icon is-medium">
+            <a class="button is-medium is-default"
+              :class="{ 'is-loading': isLoading }"
+              @click="fbLogin">
+
+              <span class="icon">
                 <i class="fa fa-facebook"></i>
               </span>
-            </button>
-          </div>
 
-          <div class="column" v-if="logged">
-            <m-card :data="userInfo"></m-card>
+              <span>Entre com o facebook</span>
+            </a>
           </div>
         </div>
       </div>
@@ -27,7 +28,6 @@
 
 <script>
 import mSubheader from '@/components/Subheader';
-import mCard from '@/components/Card';
 
 import OAuth from '../assets/js/oAuth';
 import Event from '../assets/js/Event';
@@ -38,23 +38,22 @@ export default {
 
   data() {
     return {
-      logged: false,
-      userInfo: '',
+      isLoading: false,
     };
   },
 
   components: {
     mSubheader,
-    mCard,
   },
 
   methods: {
     fbLogin() {
+      this.isLoading = true;
       this.fb_oauth.login();
     },
 
     handleFacebook(obj) {
-      this.logged = true;
+      this.isLoading = false;
 
       const user = {
         name: obj.user.displayName,
@@ -63,8 +62,11 @@ export default {
         id: obj.user.uid,
       };
 
-      this.userInfo = user;
       this.storage.set(user);
+
+      setTimeout(() => {
+        this.$router.push('/dashboard');
+      }, 200);
     },
   },
 
@@ -79,8 +81,9 @@ export default {
     const userInfo = this.storage.get();
 
     if (userInfo) {
-      this.logged = true;
-      this.userInfo = userInfo;
+      setTimeout(() => {
+        this.$router.push('/dashboard');
+      }, 200);
     }
   },
 
@@ -93,13 +96,5 @@ export default {
 <style scoped>
   .section {
     text-align: center;
-  }
-
-  .is-fb {
-    background-color: #6275AD;
-  }
-
-  .is-fb i {
-    color: #FFF !important;
   }
 </style>
