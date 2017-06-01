@@ -50,6 +50,9 @@ export default new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
     },
 
     {

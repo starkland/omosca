@@ -121,17 +121,8 @@ export default {
       this.isOpen = !this.isOpen;
     },
 
-    handleFacebook(obj) {
+    handleFacebook() {
       this.isLogged = !this.isLogged;
-
-      const user = {
-        name: obj.user.displayName,
-        email: obj.user.email,
-        photoURL: obj.user.photoURL,
-        id: obj.user.uid,
-      };
-
-      this.storage.set(user);
     },
 
     logout() {

@@ -52,8 +52,17 @@ export default {
       this.fb_oauth.login();
     },
 
-    handleFacebook() {
+    handleFacebook(obj) {
       this.isLoading = false;
+
+      const user = {
+        name: obj.user.displayName,
+        email: obj.user.email,
+        photoURL: obj.user.photoURL,
+        id: obj.user.uid,
+      };
+
+      this.storage.set(user);
 
       setTimeout(() => {
         this.$router.push('/dashboard');
