@@ -122,8 +122,6 @@ export default {
     },
 
     handleFacebook(obj) {
-      console.warn(obj.user);
-
       this.isLogged = !this.isLogged;
 
       const user = {
@@ -143,7 +141,6 @@ export default {
       this.$router.push('/');
     },
   },
-
 
   created() {
     this.storage = new LocalStorage('user_info');
