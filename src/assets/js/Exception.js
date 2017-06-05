@@ -13,3 +13,5 @@ class Exception extends Error {
 }
 
 export default Exception;
+
+// https://stackoverflow.com/questions/31089801/extending-error-in-javascript-with-es6-syntax/32749533#32749533
