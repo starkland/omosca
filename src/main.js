@@ -4,8 +4,14 @@ import Vue from 'vue';
 import VueMoment from 'vue-moment';
 import moment from 'moment';
 
+// Sentry
+import Raven from 'raven-js';
+import RavenVue from 'raven-js/plugins/vue';
+
 import App from './App';
 import router from './router';
+
+// ====
 
 moment.locale('pt-br');
 
@@ -14,6 +20,11 @@ Vue.config.productionTip = false;
 Vue.use(VueMoment, {
   moment,
 });
+
+Raven
+  .config('https://87875b8c7a3a4f4bbaf24aefac89ae3d@sentry.io/176198')
+  .addPlugin(RavenVue, Vue)
+  .install();
 
 /* eslint-disable no-new */
 new Vue({
