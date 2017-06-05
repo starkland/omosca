@@ -10,6 +10,7 @@ import RavenVue from 'raven-js/plugins/vue';
 
 import App from './App';
 import router from './router';
+import Config from './assets/js/Config';
 
 // ====
 
@@ -22,7 +23,7 @@ Vue.use(VueMoment, {
 });
 
 Raven
-  .config('https://87875b8c7a3a4f4bbaf24aefac89ae3d@sentry.io/176198')
+  .config(Config.sentry_config)
   .addPlugin(RavenVue, Vue)
   .install();
 
