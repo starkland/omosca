@@ -66,8 +66,11 @@
           <h1 class="title">Local</h1>
         </div>
 
-        <div>
-          <p>{{vm.place}}</p>
+        <div v-if="vm.location">
+          <figure>
+            <img :src="vm.static_map" alt="">
+            <figcaption>{{vm.location.address}}</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -102,6 +105,12 @@ export default {
 
     handleEventDetails(obj) {
       this.vm = obj;
+      this.vm.static_map = `https://maps.googleapis.com/maps/api/staticmap?center=${encodeURI(obj.location.address)}
+      &zoom=12
+      &size=800x300
+      &markers=color:green|${obj.location.coords}
+      &maptype=roadmap
+      &key=AIzaSyCa_jXa3eE_zf1WYbdPn__MDSGJjMRw8OM`;
     },
   },
 

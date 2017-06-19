@@ -142,19 +142,19 @@
           </label>
 
           <p class="control has-icons-left has-icons-right">
-            <input
-              class="input"
-              type="text"
-              placeholder="local do evento"
-              :class="{ 'is-danger' : fields.place }"
-              v-model="form.place">
+            <vue-google-autocomplete
+              id="map"
+              classname="input"
+              v-model="form.location"
+              @placechanged="getAddressData">
+            </vue-google-autocomplete>
 
             <span class="icon is-small is-left">
               <i class="fa fa-location-arrow"></i>
             </span>
 
             <span class="icon is-small is-right"
-              v-if="fields.place">
+              v-if="fields.location">
               <i class="fa fa-warning"></i>
             </span>
           </p>
@@ -214,10 +214,15 @@
 </template>
 
 <script>
+import VueGoogleAutocomplete from 'vue-google-autocomplete';
 import Event from '../assets/js/Event';
 
 export default {
   name: 'Form',
+
+  components: {
+    VueGoogleAutocomplete,
+  },
 
   data() {
     return {
@@ -227,24 +232,20 @@ export default {
         image: '',
         link: '',
         date: '',
-        place: '',
+        location: {
+          address: '',
+          coords: [],
+        },
         description: '',
         terms: false,
       },
-      // image: {
-      //   url: '',
-      //   name: '',
-      //   size: '',
-      //   type: '',
-      //   blob: '',
-      // },
       fields: {
         name: false,
         email: false,
         image: false,
         link: false,
         date: false,
-        place: false,
+        location: false,
         description: false,
         terms: false,
       },
@@ -261,12 +262,15 @@ export default {
       Object.keys(form).forEach((item) => {
         if (!form[item]) {
           this.fields[item] = true;
+          this.isLoading = false;
         } else {
           this.fields[item] = false;
         }
       });
 
-      this.submitForm(form);
+      if (this.isLoading === true) {
+        this.submitForm(form);
+      }
     },
 
     fileChange(e) {
@@ -320,7 +324,10 @@ export default {
         image: '',
         link: '',
         date: '',
-        place: '',
+        location: {
+          address: '',
+          coords: [],
+        },
         description: '',
         terms: false,
       };
@@ -328,6 +335,20 @@ export default {
 
     hideAlert() {
       this.showAlert = !this.showAlert;
+    },
+
+    getAddressData(address) {
+      const {
+        route, locality,
+        latitude, longitude,
+        country,
+      } = address;
+
+      const locationForm = this.form.location;
+
+      locationForm.address = `${route}, ${locality} - ${country}`;
+      locationForm.coords[0] = latitude;
+      locationForm.coords[1] = longitude;
     },
   },
 };
