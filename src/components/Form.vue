@@ -262,16 +262,15 @@ export default {
       Object.keys(form).forEach((item) => {
         if (!form[item]) {
           this.fields[item] = true;
+          this.isLoading = false;
         } else {
           this.fields[item] = false;
         }
-
-        this.isLoading = false;
       });
 
-      console.warn(form.location);
-
-      // this.submitForm(form);
+      if (this.isLoading === true) {
+        this.submitForm(form);
+      }
     },
 
     fileChange(e) {
@@ -325,7 +324,10 @@ export default {
         image: '',
         link: '',
         date: '',
-        location: '',
+        location: {
+          address: '',
+          coords: [],
+        },
         description: '',
         terms: false,
       };
@@ -347,14 +349,8 @@ export default {
       locationForm.address = `${route}, ${locality} - ${country}`;
       locationForm.coords[0] = latitude;
       locationForm.coords[1] = longitude;
-
-      Event.$emit('address_ok');
     },
   },
-
-  // mounted() {
-  //   // Event.$on('address_ok', this.handleEvents);
-  // },
 };
 </script>
 
