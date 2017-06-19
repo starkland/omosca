@@ -67,7 +67,8 @@
         </div>
 
         <div>
-          <p>{{vm.place}}</p>
+          <p>{{vm.location.address}}</p>
+          <p>{{vm.location.coords}}</p>
         </div>
       </div>
     </div>
