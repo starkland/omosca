@@ -144,9 +144,9 @@
           <p class="control has-icons-left has-icons-right">
             <vue-google-autocomplete
               id="map"
-              class="input"
+              classname="input"
               v-model="form.location"
-              @placeChanged="getAddressData">
+              @placechanged="getAddressData">
             </vue-google-autocomplete>
 
             <span class="icon is-small is-left">
@@ -232,7 +232,10 @@ export default {
         image: '',
         link: '',
         date: '',
-        location: '',
+        location: {
+          address: '',
+          coords: [],
+        },
         description: '',
         terms: false,
       },
@@ -262,6 +265,8 @@ export default {
         } else {
           this.fields[item] = false;
         }
+
+        this.isLoading = false;
       });
 
       console.warn(form.location);
@@ -331,23 +336,25 @@ export default {
     },
 
     getAddressData(address) {
-      // const {
-      //   route, locality,
-      //   latitude, longitude,
-      //   country,
-      // } = address;
+      const {
+        route, locality,
+        latitude, longitude,
+        country,
+      } = address;
 
-      console.warn(address);
+      const locationForm = this.form.location;
 
-      // const locationForm = this.form.location;
+      locationForm.address = `${route}, ${locality} - ${country}`;
+      locationForm.coords[0] = latitude;
+      locationForm.coords[1] = longitude;
 
-      // locationForm.address = `${route}, ${locality} - ${country}`;
-      // locationForm.coords[0] = latitude;
-      // locationForm.coords[1] = longitude;
-
-      // console.warn(locationForm);
+      Event.$emit('address_ok');
     },
   },
+
+  // mounted() {
+  //   // Event.$on('address_ok', this.handleEvents);
+  // },
 };
 </script>
 
