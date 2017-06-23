@@ -5,9 +5,9 @@
         <div class="columns">
           <div class="column">
             <div class="heading">
-              <h1 class="title">Section</h1>
+              <h1 class="title">Seja o primeiro!</h1>
               <h2 class="subtitle">
-                A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+                Cadastre seu e-mail e seja um dos <strong>primeiros</strong> a ter acesso a <strong>promoções</strong>, novidades e <strong>eventos</strong> da sua cidade!
               </h2>
             </div>
           </div>
