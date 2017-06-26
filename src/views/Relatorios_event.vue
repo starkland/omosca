@@ -5,13 +5,44 @@
       subtitle="Relatório de eventos">
     </m-subheader>
 
-    <m-rel-events></m-rel-events>
+    <section class="section">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title">
+            Relatório
+          </h1>
+
+          <h2 class="subtitle">
+            Relatório de eventos cadastrados
+          </h2>
+        </div>
+
+        <div class="columns">
+          <m-level
+            total="2"
+            following="10">
+          </m-level>
+        </div>
+
+        <div class="columns">
+          <div class="column is-one-quarter">
+            <m-menu></m-menu>
+          </div>
+
+          <div class="column">
+            <m-rel-events></m-rel-events>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import mSubheader from '@/components/Subheader';
 import mRelEvents from '@/components/relatorio/Events';
+import mMenu from '@/components/Menu';
+import mLevel from '@/components/Level';
 
 export default {
   name: 'Rel_Eventos',
@@ -19,6 +50,8 @@ export default {
   components: {
     mSubheader,
     mRelEvents,
+    mMenu,
+    mLevel,
   },
 };
 </script>
