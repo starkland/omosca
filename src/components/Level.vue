@@ -8,23 +8,23 @@
     </div>
 
     <div class="level-item has-text-centered">
-      <div>
+      <div v-show="following">
         <p class="heading">Following</p>
         <p class="title">{{following}}</p>
       </div>
     </div>
 
     <div class="level-item has-text-centered">
-      <div>
+      <div v-show="followers">
         <p class="heading">Followers</p>
-        <p class="title">456K</p>
+        <p class="title">{{followers}}</p>
       </div>
     </div>
 
     <div class="level-item has-text-centered">
-      <div>
+      <div v-show="likes">
         <p class="heading">Likes</p>
-        <p class="title">789</p>
+        <p class="title">{{likes}}</p>
       </div>
     </div>
   </nav>
@@ -42,6 +42,18 @@ export default {
     },
 
     following: {
+      type: String,
+      required: false,
+      default: '',
+    },
+
+    followers: {
+      type: String,
+      required: false,
+      default: '',
+    },
+
+    likes: {
       type: String,
       required: false,
       default: '',
