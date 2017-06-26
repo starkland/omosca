@@ -7,16 +7,6 @@
 
     <section class="section">
       <div class="container">
-        <div class="heading">
-          <h1 class="title">
-            Perfil
-          </h1>
-
-          <h2 class="subtitle">
-            Informações sobre o seu perfil
-          </h2>
-        </div>
-
         <div class="columns">
           <div class="column is-one-quarter">
             <m-menu></m-menu>
@@ -83,8 +73,4 @@ export default {
 };
 </script>
 
-<style scoped>
-  .heading {
-    margin-bottom: 50px;
-  }
-</style>
+<style scoped></style>

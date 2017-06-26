@@ -7,31 +7,19 @@
 
     <section class="section">
       <div class="container">
-        <div class="heading">
-          <h1 class="title">
-            Relatório
-          </h1>
-
-          <h2 class="subtitle">
-            Relatório de eventos cadastrados
-          </h2>
-        </div>
-
-        <aside>
-          <m-level
-            total="2"
-            following="10"
-            followers="102"
-            likes="1002">
-          </m-level>
-        </aside>
-
         <div class="columns">
           <div class="column is-one-quarter">
             <m-menu></m-menu>
           </div>
 
           <div class="column">
+            <m-level
+              total="2"
+              following="10"
+              followers="102"
+              likes="1002">
+            </m-level>
+
             <m-rel-events></m-rel-events>
           </div>
         </div>
@@ -58,8 +46,4 @@ export default {
 };
 </script>
 
-<style scoped>
-  aside {
-    margin: 50px auto;
-  }
-</style>
+<style scoped></style>

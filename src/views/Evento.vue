@@ -7,16 +7,6 @@
 
     <section class="section">
       <div class="container">
-        <div class="heading">
-          <h1 class="title">
-            Cadastre seu evento
-          </h1>
-
-          <h2 class="subtitle">
-            Cadastreu seu evento novamente.
-          </h2>
-        </div>
-
         <div class="columns">
           <div class="column is-one-quarter">
             <m-menu></m-menu>
@@ -50,9 +40,5 @@ export default {
 <style scoped>
 .container {
   margin: 30px auto;
-}
-
-.heading {
-  margin-bottom: 50px;
 }
 </style>
