@@ -17,12 +17,12 @@
           </h2>
         </div>
 
-        <div class="columns">
+        <aside>
           <m-level
             total="2"
             following="10">
           </m-level>
-        </div>
+        </aside>
 
         <div class="columns">
           <div class="column is-one-quarter">
@@ -56,4 +56,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  aside {
+    margin: 50px auto;
+  }
+</style>
