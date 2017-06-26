@@ -49,6 +49,8 @@
 import mSubheader from '@/components/Subheader';
 import mMenu from '@/components/Menu';
 
+import Location from '../assets/js/Location';
+
 export default {
   name: 'Configuracoes',
 
@@ -57,12 +59,17 @@ export default {
     mMenu,
   },
 
+  mounted() {
+    this.location = new Location();
+  },
+
   methods: {
     getLocation(evt) {
       const checked = evt.target.checked;
 
       if (checked) {
         console.warn('getLocation');
+        this.location.get();
       }
     },
 
