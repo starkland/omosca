@@ -7,9 +7,22 @@
 
     <section class="section">
       <div class="container">
+        <div class="heading">
+          <h1 class="title">
+            Perfil
+          </h1>
+
+          <h2 class="subtitle">
+            Informações sobre o seu perfil
+          </h2>
+        </div>
+
         <div class="columns">
+          <div class="column is-one-quarter">
+            <m-menu></m-menu>
+          </div>
+
           <div class="column">
-            <div class="card">
               <div class="card-content">
                 <div class="media">
                   <div class="media-left">
@@ -26,7 +39,6 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
@@ -36,6 +48,7 @@
 
 <script>
 import mSubheader from '@/components/Subheader';
+import mMenu from '@/components/Menu';
 import LocalStorage from '../assets/js/LocalStorage';
 
 export default {
@@ -49,6 +62,7 @@ export default {
 
   components: {
     mSubheader,
+    mMenu,
   },
 
   created() {
@@ -69,4 +83,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .heading {
+    margin-bottom: 50px;
+  }
+</style>
