@@ -20,7 +20,9 @@
         <aside>
           <m-level
             total="2"
-            following="10">
+            following="10"
+            followers="102"
+            likes="1002">
           </m-level>
         </aside>
 
