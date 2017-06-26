@@ -1,5 +1,8 @@
 ## Setup
 
+[![Build Status](https://travis-ci.org/starkland/omosca.svg?branch=master)](https://travis-ci.org/starkland/omosca) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/068eb7197685459ab73321ffeb139c1c)](https://www.codacy.com/app/Starkland/omosca?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=starkland/omosca&amp;utm_campaign=Badge_Grade)
+
+
 ``` bash
 # install dependencies
 npm install
