@@ -50,6 +50,7 @@ import mSubheader from '@/components/Subheader';
 import mMenu from '@/components/Menu';
 
 import Location from '../assets/js/Location';
+import Notification from '../assets/js/Notification';
 
 export default {
   name: 'Configuracoes',
@@ -61,6 +62,7 @@ export default {
 
   mounted() {
     this.location = new Location();
+    this.notification = new Notification();
   },
 
   methods: {
@@ -78,6 +80,7 @@ export default {
 
       if (checked) {
         console.warn('getNotification');
+        this.notification.get();
       }
     },
   },
