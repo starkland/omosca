@@ -13,6 +13,31 @@
           </div>
 
           <div class="column">
+            <form>
+              <fieldset class="field">
+                <input
+                  id="location"
+                  type="checkbox"
+                  @change="getLocation"
+                >
+
+                <label for="location" class="checkbox">
+                  Compartilhar a minha localização para um melhor relatório.
+                </label>
+              </fieldset>
+
+              <fieldset class="field">
+                <input
+                  id="notifications"
+                  type="checkbox"
+                  @change="getNotification"
+                >
+
+                <label for="notifications" class="checkbox">
+                  Permitir o recebimento de notificações.
+                </label>
+              </fieldset>
+            </form>
           </div>
         </div>
       </div>
@@ -31,7 +56,29 @@ export default {
     mSubheader,
     mMenu,
   },
+
+  methods: {
+    getLocation(evt) {
+      const checked = evt.target.checked;
+
+      if (checked) {
+        console.warn('getLocation');
+      }
+    },
+
+    getNotification(evt) {
+      const checked = evt.target.checked;
+
+      if (checked) {
+        console.warn('getNotification');
+      }
+    },
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  fieldset {
+    border: none;
+  }
+</style>
