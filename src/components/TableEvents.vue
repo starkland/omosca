@@ -25,16 +25,19 @@
 
           <td>
             <button class="button is-dark"
+              title="Visualizar"
               @click="ViewEvent(item)">
               Visualizar
             </button>
 
             <button class="button is-primary"
+              title="Editar"
               @click="editEvent(item)">
               Editar
             </button>
 
             <button class="button is-danger"
+              title="Excluir"
               @click="removeEvent(item)">
               Excluir
             </button>
