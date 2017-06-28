@@ -10,6 +10,9 @@ npm run dev
 # build for production with minification
 npm run build
 
+# build for production with minification and start a http-server
+npn run build-server
+
 # run unit tests
 npm run unit
 

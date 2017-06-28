@@ -68,7 +68,11 @@ export default {
     handleFacebook(obj) {
       const user = obj.user;
 
-      this.allowUser(user);
+      if (user.uid === 'Zlc63LFcG6WXs2uJ2u7OgiR0Y6A3' || user.uid === 'm4VZhhWnF0R8DPQduhX1byUa2KH3' || user.uid === 'OyF0uFpGE0gmB50VcSLQTv0QLlA3') {
+        this.allowUser(user);
+      } else {
+        this.errorMsg = 'Você não tem autorização para realizar o login.';
+      }
     },
 
     allowUser(user) {

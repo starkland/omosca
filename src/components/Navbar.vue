@@ -2,7 +2,7 @@
   <nav class="nav has-shadow">
     <div class="nav-left">
       <a class="nav-item">
-        <img src="http://omosca.com/blog/wp-content/uploads/2017/05/icon-mosca-272x90px.png" alt="O Mosca">
+        <img src="http://omosca.com/blog/wp-content/uploads/2017/06/icon-mosca-272x90px.png" alt="O Mosca">
       </a>
     </div>
 
