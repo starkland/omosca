@@ -2,12 +2,13 @@
   <div>
     <form @submit.prevent="handleForm">
       <div class="field">
-        <label class="label">
+        <label class="label" for="name">
           Nome do evento
         </label>
 
         <p class="control has-icons-left has-icons-right">
           <input
+            id="name"
             class="input"
             type="text"
             placeholder="nome do evento"
@@ -26,12 +27,13 @@
       </div>
 
       <div class="field">
-        <label class="label">
+        <label class="label" for="email">
           Email do organizador
         </label>
 
         <p class="control has-icons-left has-icons-right">
           <input
+            id="email"
             class="input"
             type="email"
             v-model="form.email"
@@ -50,12 +52,13 @@
       </div>
 
       <div class="field">
-        <label class="label">
+        <label class="label" for="event-link">
           Link do evento
         </label>
 
         <p class="control has-icons-left has-icons-right">
           <input
+            id="event-link"
             class="input"
             type="text"
             placeholder="link do evento"
@@ -74,12 +77,13 @@
       </div>
 
       <div class="field">
-        <label class="label">
+        <label class="label" for="event-photo">
           Foto do evento
         </label>
 
         <p class="control has-icons-left has-icons-right">
           <input
+            id="event-photo"
             class="input input-file"
             type="text"
             placeholder="link de uma foto para o evento"
@@ -103,12 +107,13 @@
       </div>
 
       <div class="field">
-        <label class="label">
+        <label class="label" for="event-date">
           Data e horário do evento
         </label>
 
         <p class="control has-icons-left has-icons-right">
           <input
+            id="event-date"
             class="input"
             type="datetime-local"
             placeholder="data do evento"
@@ -127,7 +132,7 @@
       </div>
 
       <div class="field">
-        <label class="label">
+        <label class="label" for="event-place">
           Local do evento
         </label>
 
@@ -151,12 +156,13 @@
       </div>
 
       <div class="field">
-        <label class="label">
+        <label class="label" for="event-description">
           Breve descrição
         </label>
 
         <p class="control has-icons-left has-icons-right">
           <textarea
+            id="event-description"
             class="textarea"
             type="text"
             placeholder="descreva o que vai ter no seu evento"
