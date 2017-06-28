@@ -56,7 +56,7 @@ export default new Router({
     },
 
     {
-      path: '/evento/novo',
+      path: '/dashboard/evento/novo',
       name: 'Evento',
       component: Evento,
       beforeEnter: (to, from, next) => {
@@ -65,7 +65,7 @@ export default new Router({
     },
 
     {
-      path: '/evento/:id',
+      path: '/dashboard/evento/:id',
       name: 'EventoInterno',
       component: EventoInterno,
       beforeEnter: (to, from, next) => {
@@ -80,7 +80,7 @@ export default new Router({
     },
 
     {
-      path: '/relatorios/eventos',
+      path: '/dashboard/relatorios/eventos',
       name: 'RelatoriosEventos',
       component: RelatoriosEvt,
       beforeEnter: (to, from, next) => {
@@ -89,7 +89,7 @@ export default new Router({
     },
 
     {
-      path: '/relatorios/newsletter',
+      path: '/dashboard/relatorios/newsletter',
       name: 'RelatoriosNewsletter',
       component: RelatoriosNews,
       beforeEnter: (to, from, next) => {
@@ -98,7 +98,7 @@ export default new Router({
     },
 
     {
-      path: '/perfil',
+      path: '/dashboard/perfil/me',
       name: 'Perfil',
       component: Perfil,
       beforeEnter: (to, from, next) => {
@@ -107,7 +107,7 @@ export default new Router({
     },
 
     {
-      path: '/configuracoes',
+      path: '/dashboard/perfil/configuracoes',
       name: 'Configuracoes',
       component: Configuracoes,
       beforeEnter: (to, from, next) => {

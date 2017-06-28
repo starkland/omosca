@@ -7,7 +7,7 @@
             {{vm.name}}
           </h1>
           <h2 class="subtitle">
-            {{vm.created_at | moment("dddd, Do MMM YYYY")}}
+            {{vm.date | moment("dddd, Do MMM YYYY")}}
           </h2>
         </div>
       </div>

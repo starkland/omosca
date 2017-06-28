@@ -8,9 +8,9 @@
     <ul class="menu-list">
       <li>
         <a :class="{
-            'is-active': setMenuActive('/evento/novo')
+            'is-active': setMenuActive('/dashboard/evento/novo')
           }"
-          @click="goTo('/evento/novo')">
+          @click="goTo('/dashboard/evento/novo')">
 
           Cadastrar
         </a>
@@ -25,18 +25,18 @@
     <ul class="menu-list">
       <li>
         <a :class="{
-            'is-active': setMenuActive('/relatorios/eventos')
+            'is-active': setMenuActive('/dashboard/relatorios/eventos')
           }"
-          @click="goTo('/relatorios/eventos')">
+          @click="goTo('/dashboard/relatorios/eventos')">
           Eventos
         </a>
       </li>
 
       <li>
         <a :class="{
-            'is-active': setMenuActive('/relatorios/newsletter')
+            'is-active': setMenuActive('/dashboard/relatorios/newsletter')
           }"
-          @click="goTo('/relatorios/newsletter')">
+          @click="goTo('/dashboard/relatorios/newsletter')">
           Newsletter
         </a>
       </li>
@@ -51,9 +51,9 @@
       <li>
         <a
           :class="{
-            'is-active': setMenuActive('/perfil')
+            'is-active': setMenuActive('/dashboard/perfil/me')
           }"
-          @click="goTo('/perfil')">
+          @click="goTo('/dashboard/perfil/me')">
           Meu perfil
         </a>
       </li>
@@ -61,9 +61,9 @@
       <li>
         <a
           :class="{
-            'is-active': setMenuActive('/configuracoes')
+            'is-active': setMenuActive('/dashboard/perfil/configuracoes')
           }"
-          @click="goTo('/configuracoes')">
+          @click="goTo('/dashboard/perfil/configuracoes')">
           Configurações
         </a>
       </li>

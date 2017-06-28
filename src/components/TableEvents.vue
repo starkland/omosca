@@ -13,8 +13,8 @@
       <tbody>
         <tr v-for="item in orderedEvents">
           <td>
-            {{item.date_hour | moment("DD/MM/YYYY")}}
-            {{item.date_hour | moment("hh:mm")}}
+            {{item.date | moment("DD/MM/YYYY")}}
+            {{item.date | moment("hh:mm")}}
           </td>
 
           <td>{{item.name}}</td>
@@ -79,7 +79,7 @@ export default {
 
   computed: {
     orderedEvents() {
-      return _.orderBy(this.$props.data, 'date_hour');
+      return _.orderBy(this.$props.data, 'date');
     },
   },
 
@@ -93,7 +93,7 @@ export default {
     },
 
     ViewEvent(itemObj) {
-      this.$router.push(`/evento/${itemObj.created_at}`);
+      this.$router.push(`/dashboard/evento/${itemObj.created_at}`);
     },
   },
 };

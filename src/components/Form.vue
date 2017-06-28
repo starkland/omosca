@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="section">
     <form @submit.prevent="handleForm">
       <div class="field">
         <label class="label" for="name">
@@ -340,8 +340,16 @@ export default {
       } = address;
 
       const locationForm = this.form.location;
+      locationForm.coords = [];
 
-      locationForm.address = `${route}, ${locality} - ${country}`;
+      if (address.locality && address.street_number) {
+        locationForm.address = `${route}, ${address.street_number} - ${locality}, ${country}`;
+      } else if (address.street_number) {
+        locationForm.address = `${route}, ${address.street_number} - ${country}`;
+      } else {
+        locationForm.address = `${route} - ${country}`;
+      }
+
       locationForm.coords[0] = latitude;
       locationForm.coords[1] = longitude;
     },
@@ -366,5 +374,9 @@ export default {
 
   .image-content span {
     font-weight: 900;
+  }
+
+  .section {
+    padding-top: 0;
   }
 </style>

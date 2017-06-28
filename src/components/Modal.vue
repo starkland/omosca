@@ -15,176 +15,15 @@
 
       <section class="modal-card-body">
         <!-- Remove -->
-        <div v-if="modal.type == 'remove'">
+        <div v-show="modal.type == 'remove'">
           <p>
             Você tem certeza que deseja remover este evento? <br /> Esta ação não poderá ser desfeita!
           </p>
         </div>
 
         <!-- Edit -->
-        <div v-if="modal.type == 'edit'">
-          <form>
-            <div class="field">
-              <label class="label">
-                Nome do evento
-              </label>
-
-              <p class="control has-icons-left has-icons-right">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="nome do evento"
-                  :class="{ 'is-danger' : fields.name }"
-                  v-model="form.name">
-
-                <span class="icon is-small is-left">
-                  <i class="fa fa-user"></i>
-                </span>
-
-                <span class="icon is-small is-right"
-                  v-if="fields.name">
-                  <i class="fa fa-warning"></i>
-                </span>
-              </p>
-            </div>
-
-            <div class="field">
-              <label class="label">
-                Email do organizador
-              </label>
-
-              <p class="control has-icons-left has-icons-right">
-                <input
-                  class="input"
-                  type="email"
-                  v-model="form.email"
-                  :class="{ 'is-danger' : fields.email }"
-                  placeholder="user@email.com">
-
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
-
-                <span class="icon is-small is-right"
-                  v-if="fields.email">
-                  <i class="fa fa-warning"></i>
-                </span>
-              </p>
-            </div>
-
-            <div class="field">
-              <label class="label">
-                Link do evento
-              </label>
-
-              <p class="control has-icons-left has-icons-right">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="link do evento"
-                  :class="{ 'is-danger' : fields.link }"
-                  v-model="form.link">
-
-                <span class="icon is-small is-left">
-                  <i class="fa fa-link"></i>
-                </span>
-
-                <span class="icon is-small is-right"
-                  v-if="fields.link">
-                  <i class="fa fa-warning"></i>
-                </span>
-              </p>
-            </div>
-
-            <div class="field">
-              <label class="label">
-                Foto do evento
-              </label>
-
-              <p class="control has-icons-left has-icons-right">
-                <input
-                  class="input input-file"
-                  type="text"
-                  placeholder="link de uma foto para o evento"
-                  v-model="form.image"
-                  :class="{ 'is-danger' : fields.image }"
-                  >
-
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-link"></i>
-                  </span>
-              </p>
-            </div>
-
-            <div class="field">
-              <label class="label">
-                Data e horário do evento
-              </label>
-
-              <p class="control has-icons-left has-icons-right">
-                <input
-                  class="input"
-                  type="datetime-local"
-                  placeholder="data do evento"
-                  :class="{ 'is-danger' : fields.date }"
-                  v-model="form.date">
-
-                <span class="icon is-small is-left">
-                  <i class="fa fa-calendar"></i>
-                </span>
-
-                <span class="icon is-small is-right"
-                  v-if="fields.date">
-                  <i class="fa fa-warning"></i>
-                </span>
-              </p>
-            </div>
-
-            <div class="field">
-              <label class="label">
-                Local do evento
-              </label>
-
-              <p class="control has-icons-left has-icons-right">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="local do evento"
-                  :class="{ 'is-danger' : fields.place }"
-                  v-model="form.place">
-
-                <span class="icon is-small is-left">
-                  <i class="fa fa-location-arrow"></i>
-                </span>
-
-                <span class="icon is-small is-right"
-                  v-if="fields.place">
-                  <i class="fa fa-warning"></i>
-                </span>
-              </p>
-            </div>
-
-            <div class="field">
-              <label class="label">
-                Breve descrição
-              </label>
-
-              <p class="control has-icons-left has-icons-right">
-                <textarea
-                  class="textarea"
-                  type="text"
-                  placeholder="descreva o que vai ter no seu evento"
-                  :class="{ 'is-danger' : fields.description }"
-                  v-model="form.description">
-                </textarea>
-
-                <span class="icon is-small is-right"
-                  v-if="fields.description">
-                  <i class="fa fa-warning"></i>
-                </span>
-              </p>
-            </div>
-          </form>
+        <div v-show="modal.type == 'edit'">
+          <m-form></m-form>
         </div>
       </section>
 
@@ -205,9 +44,14 @@
 <script>
 import Event from '../assets/js/Event';
 import ApiService from '../assets/js/ApiService';
+import mForm from '../components/Form';
 
 export default {
   name: 'Modal',
+
+  components: {
+    mForm,
+  },
 
   data() {
     return {
@@ -237,6 +81,7 @@ export default {
       this.isActive = !this.isActive;
 
       this.form = obj;
+      this.$children[0].form = this.form;
     },
 
     handleRemove(obj) {
