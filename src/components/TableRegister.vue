@@ -21,6 +21,7 @@
 
           <td>
             <button class="button is-danger"
+              title="Excluir"
               @click="removeEmail(item)">
               Excluir
             </button>
