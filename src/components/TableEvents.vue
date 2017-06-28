@@ -1,51 +1,49 @@
 <template>
   <div class="section">
-    <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Data / Hora</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Data / Hora</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr v-for="item in orderedEvents">
-            <td>
-              {{item.date_hour | moment("DD/MM/YYYY")}}
-              {{item.date_hour | moment("hh:mm")}}
-            </td>
+      <tbody>
+        <tr v-for="item in orderedEvents">
+          <td>
+            {{item.date_hour | moment("DD/MM/YYYY")}}
+            {{item.date_hour | moment("hh:mm")}}
+          </td>
 
-            <td>{{item.name}}</td>
+          <td>{{item.name}}</td>
 
-            <td>
-              <a>{{item.email}}</a>
-            </td>
+          <td>
+            <a>{{item.email}}</a>
+          </td>
 
-            <td>
-              <button class="button is-dark"
-                @click="ViewEvent(item)">
-                Visualizar
-              </button>
+          <td>
+            <button class="button is-dark"
+              @click="ViewEvent(item)">
+              Visualizar
+            </button>
 
-              <button class="button is-primary"
-                @click="editEvent(item)">
-                Editar
-              </button>
+            <button class="button is-primary"
+              @click="editEvent(item)">
+              Editar
+            </button>
 
-              <button class="button is-danger"
-                @click="removeEvent(item)">
-                Excluir
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <button class="button is-danger"
+              @click="removeEvent(item)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="container">
+    <div>
       <m-modal></m-modal>
     </div>
   </div>

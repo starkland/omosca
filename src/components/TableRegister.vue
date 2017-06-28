@@ -1,35 +1,33 @@
 <template>
   <div class="section">
-    <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Email</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr v-for="item in data">
-            <td>
-              {{item.created_at | moment("DD/MM/YYYY")}}
-            </td>
+      <tbody>
+        <tr v-for="item in data">
+          <td>
+            {{item.created_at | moment("DD/MM/YYYY")}}
+          </td>
 
-            <td>
-              <a>{{item.email}}</a>
-            </td>
+          <td>
+            <a>{{item.email}}</a>
+          </td>
 
-            <td>
-              <button class="button is-danger"
-                @click="removeEmail(item)">
-                Excluir
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <td>
+            <button class="button is-danger"
+              @click="removeEmail(item)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
