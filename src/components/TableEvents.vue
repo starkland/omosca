@@ -6,7 +6,7 @@
           <th>Data / Hora</th>
           <th>Nome</th>
           <th>Email</th>
-          <th>Ações</th>
+          <th></th>
         </tr>
       </thead>
 
@@ -27,19 +27,25 @@
             <button class="button is-dark"
               title="Visualizar"
               @click="ViewEvent(item)">
-              Visualizar
+              <span class="icon">
+                <i class="fa fa-info-circle"></i>
+              </span>
             </button>
 
             <button class="button is-primary"
               title="Editar"
               @click="editEvent(item)">
-              Editar
+              <span class="icon">
+                <i class="fa fa-pencil"></i>
+              </span>
             </button>
 
             <button class="button is-danger"
               title="Excluir"
               @click="removeEvent(item)">
-              Excluir
+              <span class="icon">
+                <i class="fa fa-trash-o"></i>
+              </span>
             </button>
           </td>
         </tr>
@@ -105,6 +111,7 @@ export default {
 
   button {
     display: inline-block;
+    width: 30%;
     margin-bottom: 5px;
   }
 </style>
