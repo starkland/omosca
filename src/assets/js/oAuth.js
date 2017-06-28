@@ -1,4 +1,5 @@
 import Event from './Event';
+import Exception from './Exception';
 
 class oAuth {
   constructor(provider) {
@@ -19,9 +20,7 @@ class oAuth {
       .auth()
       .signInWithPopup(this.provider)
       .then(result => Event.$emit('facebook_ok', result))
-      .catch((err) => {
-        console.warn(err);
-      });
+      .catch(err => new Exception(err));
   }
 }
 

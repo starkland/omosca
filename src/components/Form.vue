@@ -284,7 +284,7 @@ export default {
     },
 
     createImage(file) {
-      console.warn(file);
+      // console.warn(file);
 
       this.image = {
         url: file,
