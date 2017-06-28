@@ -23,7 +23,9 @@
             <button class="button is-danger"
               title="Excluir"
               @click="removeEmail(item)">
-              Excluir
+              <span class="icon">
+                <i class="fa fa-trash-o"></i>
+              </span>
             </button>
           </td>
         </tr>
