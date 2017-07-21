@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Event from './Event';
+import Exception from './Exception';
 
 class ApiService {
   constructor() {
@@ -48,14 +49,14 @@ class ApiService {
     axios
       .get(`${this.firebase_url}/pre_events.json`)
       .then(response => Event.$emit('all_events', response))
-      .catch(error => console.info(error));
+      .catch(error => new Exception(error));
   }
 
   getAllNews() {
     axios
       .get(`${this.firebase_url}/newsletter.json`)
       .then(response => Event.$emit('all_newsletter', response))
-      .catch(error => console.info(error));
+      .catch(error => new Exception(error));
   }
 
   removesEventById(id) {
@@ -78,7 +79,7 @@ class ApiService {
     axios
       .get(`${this.firebase_url}/pre_events/${id}.json`)
       .then(response => Event.$emit('event_details', response.data))
-      .catch(error => console.info(error));
+      .catch(error => new Exception(error));
   }
 
   removeNewsById(id) {

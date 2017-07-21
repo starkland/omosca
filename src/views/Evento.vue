@@ -5,13 +5,26 @@
       subtitle="Aqui vem um subtitulo">
     </m-subheader>
 
-    <m-form></m-form>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-2">
+            <m-menu></m-menu>
+          </div>
+
+          <div class="column">
+            <m-form></m-form>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import mSubheader from '@/components/Subheader';
 import mForm from '@/components/Form';
+import mMenu from '@/components/Menu';
 
 export default {
   name: 'Evento',
@@ -19,6 +32,7 @@ export default {
   components: {
     mSubheader,
     mForm,
+    mMenu,
   },
 };
 </script>

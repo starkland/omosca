@@ -8,8 +8,11 @@
     <section class="section">
       <div class="container">
         <div class="columns">
+          <div class="column is-2">
+            <m-menu></m-menu>
+          </div>
+
           <div class="column">
-            <div class="card">
               <div class="card-content">
                 <div class="media">
                   <div class="media-left">
@@ -26,7 +29,6 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
@@ -36,6 +38,7 @@
 
 <script>
 import mSubheader from '@/components/Subheader';
+import mMenu from '@/components/Menu';
 import LocalStorage from '../assets/js/LocalStorage';
 
 export default {
@@ -49,6 +52,7 @@ export default {
 
   components: {
     mSubheader,
+    mMenu,
   },
 
   created() {

@@ -1,65 +1,36 @@
 <template>
   <div class="section">
-    <div class="container">
-      <nav class="level">
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Total</p>
-            <p class="title">{{data.length}}</p>
-          </div>
-        </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
 
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Following</p>
-            <p class="title">123</p>
-          </div>
-        </div>
+      <tbody>
+        <tr v-for="item in data">
+          <td>
+            {{item.created_at | moment("DD/MM/YYYY")}}
+          </td>
 
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Followers</p>
-            <p class="title">456K</p>
-          </div>
-        </div>
+          <td>
+            <a>{{item.email}}</a>
+          </td>
 
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Likes</p>
-            <p class="title">789</p>
-          </div>
-        </div>
-      </nav>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Email</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr v-for="item in data">
-            <td>
-              {{item.created_at | moment("DD/MM/YYYY")}}
-            </td>
-
-            <td>
-              <a>{{item.email}}</a>
-            </td>
-
-            <td>
-              <button class="button is-danger"
-                @click="removeEmail(item)">
-                Excluir
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <td>
+            <button class="button is-danger"
+              title="Excluir"
+              @click="removeEmail(item)">
+              <span class="icon">
+                <i class="fa fa-trash-o"></i>
+              </span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -95,17 +66,5 @@ export default {
 
   .heading {
     margin-bottom: 30px;
-  }
-
-  .title span {
-    color: red;
-  }
-
-  .level {
-    margin: 0 0 40px 0;
-  }
-
-  .level p {
-    color: #89609E;
   }
 </style>

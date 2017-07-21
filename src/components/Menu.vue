@@ -7,7 +7,13 @@
 
     <ul class="menu-list">
       <li>
-        <a @click="goTo('/evento/novo')">Cadastrar</a>
+        <a :class="{
+            'is-active': setMenuActive('/dashboard/evento/novo')
+          }"
+          @click="goTo('/dashboard/evento/novo')">
+
+          Cadastrar
+        </a>
       </li>
     </ul>
 
@@ -18,13 +24,19 @@
 
     <ul class="menu-list">
       <li>
-        <a @click="goTo('/relatorios/eventos')">
+        <a :class="{
+            'is-active': setMenuActive('/dashboard/relatorios/eventos')
+          }"
+          @click="goTo('/dashboard/relatorios/eventos')">
           Eventos
         </a>
       </li>
 
       <li>
-        <a @click="goTo('/relatorios/newsletter')">
+        <a :class="{
+            'is-active': setMenuActive('/dashboard/relatorios/newsletter')
+          }"
+          @click="goTo('/dashboard/relatorios/newsletter')">
           Newsletter
         </a>
       </li>
@@ -37,13 +49,21 @@
 
     <ul class="menu-list">
       <li>
-        <a @click="goTo('/perfil')">
+        <a
+          :class="{
+            'is-active': setMenuActive('/dashboard/perfil/me')
+          }"
+          @click="goTo('/dashboard/perfil/me')">
           Meu perfil
         </a>
       </li>
 
       <li>
-        <a @click="goTo('/configuracoes')">
+        <a
+          :class="{
+            'is-active': setMenuActive('/dashboard/perfil/configuracoes')
+          }"
+          @click="goTo('/dashboard/perfil/configuracoes')">
           Configurações
         </a>
       </li>
@@ -59,8 +79,23 @@
       goTo(path) {
         this.$router.push(path);
       },
+
+      setMenuActive(path) {
+        const routerPath = this.$router.currentRoute.path;
+
+        if (path === routerPath) {
+          return true;
+        }
+
+        return false;
+      },
     },
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+  a.is-active {
+    background-color: #F5F5F5;
+    color: #00D1B2;
+  }
+</style>

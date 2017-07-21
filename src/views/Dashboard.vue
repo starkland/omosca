@@ -8,7 +8,7 @@
     <section class="section">
       <div class="container">
         <div class="columns">
-          <div class="column is-one-quarter">
+          <div class="column is-2">
             <m-menu></m-menu>
           </div>
 

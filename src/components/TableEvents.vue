@@ -1,81 +1,58 @@
 <template>
   <div class="section">
-    <div class="container">
-      <nav class="level">
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Total</p>
-            <p class="title">{{data.length}}</p>
-          </div>
-        </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Data / Hora</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
 
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Following</p>
-            <p class="title">123</p>
-          </div>
-        </div>
+      <tbody>
+        <tr v-for="item in orderedEvents">
+          <td>
+            {{item.date | moment("DD/MM/YYYY")}}
+            {{item.date | moment("hh:mm")}}
+          </td>
 
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Followers</p>
-            <p class="title">456K</p>
-          </div>
-        </div>
+          <td>{{item.name}}</td>
 
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Likes</p>
-            <p class="title">789</p>
-          </div>
-        </div>
-      </nav>
+          <td>
+            <a>{{item.email}}</a>
+          </td>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Data / Hora</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
+          <td>
+            <button class="button is-dark"
+              title="Visualizar"
+              @click="ViewEvent(item)">
+              <span class="icon">
+                <i class="fa fa-info-circle"></i>
+              </span>
+            </button>
 
-        <tbody>
-          <tr v-for="item in orderedEvents">
-            <td>
-              {{item.date_hour | moment("DD/MM/YYYY")}}
-              {{item.date_hour | moment("hh:mm")}}
-            </td>
+            <button class="button is-primary"
+              title="Editar"
+              @click="editEvent(item)">
+              <span class="icon">
+                <i class="fa fa-pencil"></i>
+              </span>
+            </button>
 
-            <td>{{item.name}}</td>
+            <button class="button is-danger"
+              title="Excluir"
+              @click="removeEvent(item)">
+              <span class="icon">
+                <i class="fa fa-trash-o"></i>
+              </span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-            <td>
-              <a>{{item.email}}</a>
-            </td>
-
-            <td>
-              <button class="button is-dark"
-                @click="ViewEvent(item)">
-                Visualizar
-              </button>
-
-              <button class="button is-primary"
-                @click="editEvent(item)">
-                Editar
-              </button>
-
-              <button class="button is-danger"
-                @click="removeEvent(item)">
-                Excluir
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container">
+    <div>
       <m-modal></m-modal>
     </div>
   </div>
@@ -102,7 +79,7 @@ export default {
 
   computed: {
     orderedEvents() {
-      return _.orderBy(this.$props.data, 'date_hour');
+      return _.orderBy(this.$props.data, 'date');
     },
   },
 
@@ -116,7 +93,7 @@ export default {
     },
 
     ViewEvent(itemObj) {
-      this.$router.push(`/evento/${itemObj.created_at}`);
+      this.$router.push(`/dashboard/evento/${itemObj.created_at}`);
     },
   },
 };
@@ -125,6 +102,7 @@ export default {
 <style scoped>
   .section {
     min-height: 400px;
+    padding-top: 0;
   }
 
   .heading {
@@ -133,18 +111,7 @@ export default {
 
   button {
     display: inline-block;
+    width: 30%;
     margin-bottom: 5px;
-  }
-
-  .title span {
-    color: red;
-  }
-
-  .level {
-    margin: 0 0 40px 0;
-  }
-
-  .level p {
-    color: #89609E;
   }
 </style>
